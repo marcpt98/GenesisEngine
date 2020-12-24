@@ -26,7 +26,6 @@
 #include "WindowConfiguration.h"
 #include "WindowAbout.h"
 #include "WindowImport.h"
-#include "WindowShaderEditor.h"
 
 #ifdef _WIN32
 #define IM_NEWLINE  "\r\n"
@@ -52,7 +51,6 @@ Editor::Editor(bool start_enabled) : Module(start_enabled)
 	windows[CONFIGURATION_WINDOW] = new WindowConfiguration();
 	windows[ABOUT_WINDOW] = new WindowAbout();
 	windows[IMPORT_WINDOW] = new WindowImport();
-	windows[SHADER_EDITOR_WINDOW] = new WindowShaderEditor();
 
 	//CONSOLE_WINDOW,
 	scene_name[0] = '\0';

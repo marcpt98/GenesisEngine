@@ -212,7 +212,6 @@
     <ClInclude Include="WindowImport.h" />
     <ClInclude Include="WindowInspector.h" />
     <ClInclude Include="WindowScene.h" />
-    <ClInclude Include="WindowShaderEditor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -296,7 +295,6 @@
     <ClCompile Include="WindowImport.cpp" />
     <ClCompile Include="WindowInspector.cpp" />
     <ClCompile Include="WindowScene.cpp" />
-    <ClCompile Include="WindowShaderEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Engine\Assets\Shaders\default_shader.frag" />
