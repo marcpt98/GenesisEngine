@@ -35,6 +35,7 @@ GLuint ShaderImporter::Compile(char* fileBuffer, ShaderType type)
 		GLuint vertexShader;
 		vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertexShader, 1, &fileBuffer, NULL);
+
 		glCompileShader(vertexShader);
 
 		if (!ShaderHasError(vertexShader))
@@ -47,6 +48,7 @@ GLuint ShaderImporter::Compile(char* fileBuffer, ShaderType type)
 		GLuint fragmentShader;
 		fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fragmentShader, 1, &fileBuffer, NULL);
+		
 		glCompileShader(fragmentShader);
 
 		if (!ShaderHasError(fragmentShader))
@@ -101,11 +103,11 @@ void ShaderImporter::CreateProgram(ResourceShader* shader)
 	GLuint shaderProgram;
 	shaderProgram = glCreateProgram();
 
-	//if (shader->vertexShader != -1)
-	glAttachShader(shaderProgram, shader->vertexShader);
+	if (shader->vertexShader != -1)
+		glAttachShader(shaderProgram, shader->vertexShader);
 
-	//if (shader->fragmentShader != -1)
-	glAttachShader(shaderProgram, shader->fragmentShader);
+	if (shader->fragmentShader != -1)
+		glAttachShader(shaderProgram, shader->fragmentShader);
 
 	glLinkProgram(shaderProgram);
 
@@ -113,22 +115,14 @@ void ShaderImporter::CreateProgram(ResourceShader* shader)
 	char infoLog[512];
 	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
 
-	if (!success)
+	if (success == 0)
 	{
 		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
 		LOG_ERROR("Error linking shader program: %s", infoLog);
-
-		glDeleteShader(shader->vertexShader);
-		glDeleteShader(shader->fragmentShader);
 	}
 	else
 	{
 		shader->id = shaderProgram;
-
-		LOG("Shader program created porperly");
-
-		glDetachShader(shaderProgram, shader->vertexShader);
-		glDetachShader(shaderProgram, shader->fragmentShader);
 
 		glDeleteShader(shader->vertexShader);
 		glDeleteShader(shader->fragmentShader);

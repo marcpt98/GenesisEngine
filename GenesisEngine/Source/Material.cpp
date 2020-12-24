@@ -98,9 +98,7 @@ void Material::BindTexture()
 	else if (!checkers_image)
 	{
 		if (_diffuseTexture != nullptr && App->resources->Exists(_resource->diffuseTextureUID))
-		{
 			_diffuseTexture->BindTexture();
-		}
 		else
 			AssignCheckersImage();
 	}

@@ -37,18 +37,15 @@ bool ModuleResources::Init()
 	MeshImporter::Init();
 	TextureImporter::Init();
 
+	App->renderer3D->Init();
+
 	//std::vector<std::string> files;
 	//std::vector<std::string> dirs;
 	//FileSystem::DiscoverFilesRecursive("Library", files, dirs);
 
-	return ret;
-}
-
-bool ModuleResources::Start()
-{
 	CheckAssetsRecursive("Assets");
 
-	return true;
+	return ret;
 }
 
 bool ModuleResources::CleanUp()
@@ -624,11 +621,8 @@ void ModuleResources::UnloadResource(Resource* resource)
 
 	resources.erase(resources.find(resource->GetUID()));
 
-	if (resource->GetType() != ResourceType::RESOURCE_SHADER)
-	{
-		delete resource;
-		resource = nullptr;
-	}
+	delete resource;
+	resource = nullptr;
 }
 
 Resource* ModuleResources::CreateResource(const char* assetsPath, ResourceType type, uint UID)

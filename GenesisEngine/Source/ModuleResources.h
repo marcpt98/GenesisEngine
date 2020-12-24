@@ -25,7 +25,6 @@ public:
 	~ModuleResources();
 
 	bool Init() override;
-	bool Start() override;
 	bool CleanUp() override;
 	void OnEditor();
 	void LoadEngineAssets(AssetsIcons& icons);
