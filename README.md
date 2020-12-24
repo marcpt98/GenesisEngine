@@ -1,8 +1,8 @@
 # Fork
-This is a fork from https://github.com/marcpages2020/GenesisEngine made by https://github.com/marcpages2020.
-The first and second assignment are made by him.
-Our original engine (first and second assignment): https://github.com/Sauko22/Unfalse-Engine.
-The third assignment will be made by us.
+- This is a fork from https://github.com/marcpages2020/GenesisEngine made by https://github.com/marcpages2020.
+- The first and second assignment are made by him.
+- Our original engine (first and second assignment): https://github.com/Sauko22/Unfalse-Engine.
+- The third assignment will be made by us.
 
 # Unfalse-Engine
 Unfalse Engine is a game engine made with C & C++ by two students from the 3rd grade of Design and Development of Videogames, from the CITM UPC (Terrassa).
