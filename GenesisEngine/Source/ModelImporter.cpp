@@ -505,7 +505,7 @@ bool ModelImporter::InternalResourcesExist(const char* path)
 		int meshID = nodeObject.GetInt("MeshID");
 		if (meshID != -1)
 		{
-			std::string meshLibraryPath = App->resources->GenerateLibraryPath(meshID, ResourceType::RESOURCE_MESH);
+			std::string meshLibraryPath = nodeObject.GetString("mesh_library_path", "No path");
 
 			if (!FileSystem::Exists(meshLibraryPath.c_str())) {
 				ret = false;
@@ -521,7 +521,7 @@ bool ModelImporter::InternalResourcesExist(const char* path)
 		int materialID = nodeObject.GetInt("MaterialID");
 		if (materialID != -1)
 		{
-			std::string materialLibraryPath = App->resources->GenerateLibraryPath(materialID, ResourceType::RESOURCE_MATERIAL);
+			std::string materialLibraryPath = nodeObject.GetString("material_library_path", "No path");
 
 			if (!FileSystem::Exists(materialLibraryPath.c_str())) {
 				ret = false;

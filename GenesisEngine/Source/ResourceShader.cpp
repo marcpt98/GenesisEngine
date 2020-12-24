@@ -12,6 +12,8 @@ void ResourceShader::Use()
 	int success = 0;
 	glGetProgramiv(id, GL_LINK_STATUS, &success);
 
+	LOG("");
+
 	glUseProgram(id);
 }
 
