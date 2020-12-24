@@ -1,0 +1,931 @@
+{
+    "Nodes": [
+        {
+            "Name": "street environment_v01",
+            "UID": 391561353,
+            "Parent UID": 0,
+            "Position": [
+                0,
+                0,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                0.99999994039535522
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "Name": "Sky001",
+            "UID": 408061530,
+            "Parent UID": 391561353,
+            "Position": [
+                18.153732299804688,
+                0,
+                58.960910797119141
+            ],
+            "Rotation": [
+                -0.99999988079071045,
+                0,
+                0,
+                0
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "Name": "Dummy001",
+            "UID": 421707246,
+            "Parent UID": 391561353,
+            "Position": [
+                0,
+                0,
+                0
+            ],
+            "Rotation": [
+                -0.70710670948028564,
+                0,
+                0,
+                0.70710670948028564
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "Name": "City_building_004",
+            "UID": 428738967,
+            "Parent UID": 421707246,
+            "Position": [
+                -41.47589111328125,
+                21.01409912109375,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1731795034,
+            "mesh_library_path": "Library\/Meshes\/1731795034.mesh",
+            "MaterialID": 201094765,
+            "material_library_path": "Library\/Materials\/201094765.material"
+        },
+        {
+            "Name": "City_building_001",
+            "UID": 447258153,
+            "Parent UID": 421707246,
+            "Position": [
+                17.707164764404297,
+                20.053276062011719,
+                2.1210729528320371e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 2093846051,
+            "mesh_library_path": "Library\/Meshes\/2093846051.mesh",
+            "MaterialID": 754087962,
+            "material_library_path": "Library\/Materials\/754087962.material"
+        },
+        {
+            "Name": "City_building_007",
+            "UID": 458815239,
+            "Parent UID": 421707246,
+            "Position": [
+                16.010492324829102,
+                37.4932861328125,
+                -1.5106878663573298e-06
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1361918393,
+            "mesh_library_path": "Library\/Meshes\/1361918393.mesh",
+            "MaterialID": 2043432470,
+            "material_library_path": "Library\/Materials\/2043432470.material"
+        },
+        {
+            "Name": "City_building_008",
+            "UID": 471625503,
+            "Parent UID": 421707246,
+            "Position": [
+                40.979995727539063,
+                18.270824432373047,
+                -2.0522466002148576e-06
+            ],
+            "Rotation": [
+                0,
+                0,
+                0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 762779799,
+            "mesh_library_path": "Library\/Meshes\/762779799.mesh",
+            "MaterialID": 382130880,
+            "material_library_path": "Library\/Materials\/382130880.material"
+        },
+        {
+            "Name": "Line002",
+            "UID": 483809178,
+            "Parent UID": 421707246,
+            "Position": [
+                -2.1597719192504883,
+                1.8538382053375244,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 991937653,
+            "mesh_library_path": "Library\/Meshes\/991937653.mesh",
+            "MaterialID": 1533491703,
+            "material_library_path": "Library\/Materials\/1533491703.material"
+        },
+        {
+            "Name": "Plane001",
+            "UID": 487150986,
+            "Parent UID": 421707246,
+            "Position": [
+                -0.02860260009765625,
+                0.026032090187072754,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                0.99663525819778442,
+                0.97061645984649658,
+                0.99663525819778442
+            ],
+            "MeshID": 1103163939,
+            "mesh_library_path": "Library\/Meshes\/1103163939.mesh",
+            "MaterialID": 1130749780,
+            "material_library_path": "Library\/Materials\/1130749780.material"
+        },
+        {
+            "Name": "City_building_010",
+            "UID": 491049762,
+            "Parent UID": 421707246,
+            "Position": [
+                25.154010772705078,
+                -39.153720855712891,
+                8.5538641769744572e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1988471948,
+            "mesh_library_path": "Library\/Meshes\/1988471948.mesh",
+            "MaterialID": 725223017,
+            "material_library_path": "Library\/Materials\/725223017.material"
+        },
+        {
+            "Name": "City_building_011",
+            "UID": 509081601,
+            "Parent UID": 421707246,
+            "Position": [
+                30.134540557861328,
+                37.4932861328125,
+                -1.5106878663573298e-06
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1361918393,
+            "mesh_library_path": "Library\/Meshes\/1361918393.mesh",
+            "MaterialID": 2043432470,
+            "material_library_path": "Library\/Materials\/2043432470.material"
+        },
+        {
+            "Name": "City_building_013",
+            "UID": 513467724,
+            "Parent UID": 421707246,
+            "Position": [
+                -42.288055419921875,
+                33.201576232910156,
+                5.0146070407208754e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1795774497,
+            "mesh_library_path": "Library\/Meshes\/1795774497.mesh",
+            "MaterialID": 260880953,
+            "material_library_path": "Library\/Materials\/260880953.material"
+        },
+        {
+            "Name": "City_building_014",
+            "UID": 517714605,
+            "Parent UID": 421707246,
+            "Position": [
+                -19.439706802368164,
+                32.061729431152344,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                1,
+                -4.3711388286737929e-08
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 697173731,
+            "mesh_library_path": "Library\/Meshes\/697173731.mesh",
+            "MaterialID": 201094765,
+            "material_library_path": "Library\/Materials\/201094765.material"
+        },
+        {
+            "Name": "City_building_016",
+            "UID": 522309591,
+            "Parent UID": 421707246,
+            "Position": [
+                34.270423889160156,
+                -41.972747802734375,
+                8.5538641769744572e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                1,
+                -4.3711388286737929e-08
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1988471948,
+            "mesh_library_path": "Library\/Meshes\/1988471948.mesh",
+            "MaterialID": 725223017,
+            "material_library_path": "Library\/Materials\/725223017.material"
+        },
+        {
+            "Name": "City_building_017",
+            "UID": 552594726,
+            "Parent UID": 421707246,
+            "Position": [
+                44.260082244873047,
+                -39.153720855712891,
+                8.5538641769744572e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1988471948,
+            "mesh_library_path": "Library\/Meshes\/1988471948.mesh",
+            "MaterialID": 725223017,
+            "material_library_path": "Library\/Materials\/725223017.material"
+        },
+        {
+            "Name": "City_building_022",
+            "UID": 556911228,
+            "Parent UID": 421707246,
+            "Position": [
+                -20.831323623657227,
+                -27.426488876342773,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                1,
+                1.9470718370939721e-07
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 10475821,
+            "mesh_library_path": "Library\/Meshes\/10475821.mesh",
+            "MaterialID": 999872423,
+            "material_library_path": "Library\/Materials\/999872423.material"
+        },
+        {
+            "Name": "City_building_023",
+            "UID": 561088488,
+            "Parent UID": 421707246,
+            "Position": [
+                42.130641937255859,
+                37.4932861328125,
+                -1.5106878663573298e-06
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1361918393,
+            "mesh_library_path": "Library\/Meshes\/1361918393.mesh",
+            "MaterialID": 2043432470,
+            "material_library_path": "Library\/Materials\/2043432470.material"
+        },
+        {
+            "Name": "City_building_024",
+            "UID": 565683474,
+            "Parent UID": 421707246,
+            "Position": [
+                -20.572771072387695,
+                43.060829162597656,
+                -0.069194458425045013
+            ],
+            "Rotation": [
+                0,
+                0,
+                1,
+                4.3711388286737929e-08
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 762779799,
+            "mesh_library_path": "Library\/Meshes\/762779799.mesh",
+            "MaterialID": 382130880,
+            "material_library_path": "Library\/Materials\/382130880.material"
+        },
+        {
+            "Name": "City_building_026",
+            "UID": 569791113,
+            "Parent UID": 421707246,
+            "Position": [
+                31.51188850402832,
+                -16.446016311645508,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                1,
+                4.3711388286737929e-08
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1372017306,
+            "mesh_library_path": "Library\/Meshes\/1372017306.mesh",
+            "MaterialID": 999872423,
+            "material_library_path": "Library\/Materials\/999872423.material"
+        },
+        {
+            "Name": "City_building_028",
+            "UID": 585177354,
+            "Parent UID": 421707246,
+            "Position": [
+                13.38798999786377,
+                -33.755039215087891,
+                -9.3834518111179932e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1208330146,
+            "mesh_library_path": "Library\/Meshes\/1208330146.mesh",
+            "MaterialID": 423788654,
+            "material_library_path": "Library\/Materials\/423788654.material"
+        },
+        {
+            "Name": "Object010",
+            "UID": 613513101,
+            "Parent UID": 421707246,
+            "Position": [
+                -2.5033531188964844,
+                15.800846099853516,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 772180417,
+            "mesh_library_path": "Library\/Meshes\/772180417.mesh",
+            "MaterialID": 813144580,
+            "material_library_path": "Library\/Materials\/813144580.material"
+        },
+        {
+            "Name": "City_building_030",
+            "UID": 617203014,
+            "Parent UID": 421707246,
+            "Position": [
+                -42.807239532470703,
+                -41.835563659667969,
+                -9.3834518111179932e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1208330146,
+            "mesh_library_path": "Library\/Meshes\/1208330146.mesh",
+            "MaterialID": 423788654,
+            "material_library_path": "Library\/Materials\/423788654.material"
+        },
+        {
+            "Name": "City_building_031",
+            "UID": 621171411,
+            "Parent UID": 421707246,
+            "Position": [
+                -34.679481506347656,
+                -41.835563659667969,
+                -9.3834518111179932e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1208330146,
+            "mesh_library_path": "Library\/Meshes\/1208330146.mesh",
+            "MaterialID": 423788654,
+            "material_library_path": "Library\/Materials\/423788654.material"
+        },
+        {
+            "Name": "City_building_032",
+            "UID": 625279050,
+            "Parent UID": 421707246,
+            "Position": [
+                -29.478403091430664,
+                21.01409912109375,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1731795034,
+            "mesh_library_path": "Library\/Meshes\/1731795034.mesh",
+            "MaterialID": 201094765,
+            "material_library_path": "Library\/Materials\/201094765.material"
+        },
+        {
+            "Name": "City_building_033",
+            "UID": 629177826,
+            "Parent UID": 421707246,
+            "Position": [
+                -32.361495971679688,
+                42.37042236328125,
+                5.0146070407208754e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1403930678,
+            "mesh_library_path": "Library\/Meshes\/1403930678.mesh",
+            "MaterialID": 260880953,
+            "material_library_path": "Library\/Materials\/260880953.material"
+        },
+        {
+            "Name": "City_building_034",
+            "UID": 633215844,
+            "Parent UID": 421707246,
+            "Position": [
+                16.049516677856445,
+                -16.696884155273438,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.7071068286895752,
+                0.70710670948028564
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1434329068,
+            "mesh_library_path": "Library\/Meshes\/1434329068.mesh",
+            "MaterialID": 999872423,
+            "material_library_path": "Library\/Materials\/999872423.material"
+        },
+        {
+            "Name": "City_building_035",
+            "UID": 637462725,
+            "Parent UID": 421707246,
+            "Position": [
+                13.38798999786377,
+                -40.802516937255859,
+                -9.3834518111179932e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0,
+                1
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1208330146,
+            "mesh_library_path": "Library\/Meshes\/1208330146.mesh",
+            "MaterialID": 423788654,
+            "material_library_path": "Library\/Materials\/423788654.material"
+        },
+        {
+            "Name": "City_building_036",
+            "UID": 641361501,
+            "Parent UID": 421707246,
+            "Position": [
+                -31.216331481933594,
+                33.201576232910156,
+                5.0146070407208754e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1795774497,
+            "mesh_library_path": "Library\/Meshes\/1795774497.mesh",
+            "MaterialID": 260880953,
+            "material_library_path": "Library\/Materials\/260880953.material"
+        },
+        {
+            "Name": "City_building_037",
+            "UID": 645399519,
+            "Parent UID": 421707246,
+            "Position": [
+                -20.317693710327148,
+                -16.163608551025391,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                1,
+                1.9470718370939721e-07
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1711346857,
+            "mesh_library_path": "Library\/Meshes\/1711346857.mesh",
+            "MaterialID": 999872423,
+            "material_library_path": "Library\/Materials\/999872423.material"
+        },
+        {
+            "Name": "City_building_038",
+            "UID": 679304946,
+            "Parent UID": 421707246,
+            "Position": [
+                -41.649002075195313,
+                -16.495393753051758,
+                0
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.7071068286895752,
+                0.70710670948028564
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1392799507,
+            "mesh_library_path": "Library\/Meshes\/1392799507.mesh",
+            "MaterialID": 999872423,
+            "material_library_path": "Library\/Materials\/999872423.material"
+        },
+        {
+            "Name": "City_building_039",
+            "UID": 683273343,
+            "Parent UID": 421707246,
+            "Position": [
+                -42.807239532470703,
+                -30.643888473510742,
+                -9.3834518111179932e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1208330146,
+            "mesh_library_path": "Library\/Meshes\/1208330146.mesh",
+            "MaterialID": 423788654,
+            "material_library_path": "Library\/Materials\/423788654.material"
+        },
+        {
+            "Name": "City_building_040",
+            "UID": 687172119,
+            "Parent UID": 421707246,
+            "Position": [
+                -34.679481506347656,
+                -30.643888473510742,
+                -9.3834518111179932e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                -0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 1208330146,
+            "mesh_library_path": "Library\/Meshes\/1208330146.mesh",
+            "MaterialID": 423788654,
+            "material_library_path": "Library\/Materials\/423788654.material"
+        },
+        {
+            "Name": "City_building_041",
+            "UID": 691140516,
+            "Parent UID": 421707246,
+            "Position": [
+                30.695278167724609,
+                21.612646102905273,
+                2.1210729528320371e-07
+            ],
+            "Rotation": [
+                0,
+                0,
+                0.70710676908493042,
+                0.70710676908493042
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ],
+            "MeshID": 2093846051,
+            "mesh_library_path": "Library\/Meshes\/2093846051.mesh",
+            "MaterialID": 754087962,
+            "material_library_path": "Library\/Materials\/754087962.material"
+        },
+        {
+            "Name": "Camera001",
+            "UID": 703672296,
+            "Parent UID": 391561353,
+            "Position": [
+                -78.312431335449219,
+                45.251216888427734,
+                -97.031112670898438
+            ],
+            "Rotation": [
+                0.049339771270751953,
+                -0.1393311619758606,
+                0.93228727579116821,
+                -0.33014035224914551
+            ],
+            "Scale": [
+                1,
+                0.99999994039535522,
+                0.99999994039535522
+            ]
+        },
+        {
+            "Name": "Spot001",
+            "UID": 738970143,
+            "Parent UID": 391561353,
+            "Position": [
+                -66.721267700195313,
+                141.93412780761719,
+                6.2041376622801181e-06
+            ],
+            "Rotation": [
+                -0.69003510475158691,
+                -0.15443935990333557,
+                -0.69003498554229736,
+                0.15443941950798035
+            ],
+            "Scale": [
+                1,
+                1,
+                1
+            ]
+        }
+    ],
+    "Lights": [
+        {
+            "name": "Sky001",
+            "Type": 4,
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "diffuse": [
+                95,
+                95,
+                100
+            ],
+            "ambient": [
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "name": "Spot001",
+            "Type": 4,
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "diffuse": [
+                100,
+                100,
+                100
+            ],
+            "ambient": [
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "Cameras": [
+        {
+            "name": "Camera001",
+            "Type": 3,
+            "Main Camera": false,
+            "position": [
+                -78.312431335449219,
+                45.251216888427734,
+                -97.031112670898438
+            ],
+            "up": [
+                0.18399544060230255,
+                0.95630478858947754,
+                0.22721542418003082
+            ],
+            "front": [
+                0.6018221378326416,
+                -0.29237163066864014,
+                0.74318838119506836
+            ],
+            "horizontalFOV": 0.013707784004509449,
+            "verticalFOV": 0.0079905074089765549,
+            "nearPlane": 0.10000000149011612,
+            "farPlane": 1000,
+            "aspectRatio": 1.7777777910232544,
+            "reference": [
+                50.1798095703125,
+                -24.377887725830078,
+                61.966899871826172
+            ]
+        }
+    ]
+} 
