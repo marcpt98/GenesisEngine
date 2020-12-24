@@ -1,16 +1,24 @@
-# Genesis Engine v0.2
-  Genesis Engine is a game engine made in C and C++ for learning purposes. I'm Marc Pagès Francesch, 
-  a Game Development Student in CITM (Terrassa, Catalonia, Spain).
+# Fork
+This is a fork from https://github.com/marcpages2020/GenesisEngine made by https://github.com/marcpages2020.
+The first and second assignment are made by him.
+Our original engine (first and second assignment): https://github.com/Sauko22/Unfalse-Engine.
+The third assignment will be made by us.
 
-  Engine GitHub page: https://github.com/marcpages2020/GenesisEngine
-  My personal GitHub profile: https://github.com/marcpages2020
+# Unfalse-Engine
+Unfalse Engine is a game engine made with C & C++ by two students from the 3rd grade of Design and Development of Videogames, from the CITM UPC (Terrassa).
+Marc Palma & Pol Juan were the responsibles to make this project come true.
+
+## Repository
+https://github.com/marcpt98/Unfalse-Engine-2.0
+
+## Team
+- Pol Juan Santos: https://github.com/Sauko22
+- Marc Palma Turon: https://github.com/marcpt98
 
 ## Controls: 
- 
   To freely move the camera in the scene, the scene window must be selected or focused.
 
-### Camera Controls:
-
+### Camera Controls
  - W / Up Arrow: Move Forward
  - A / Left Arrow: Move Left
  - S / Down Arrow: Move Backwards
