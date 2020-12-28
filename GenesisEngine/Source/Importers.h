@@ -5,6 +5,7 @@
 #include "MeshImporter.h"
 #include "MaterialImporter.h"
 #include "TextureImporter.h"
+#include "AnimationImporter.h"
 
 #endif // !_IMPORTERS_H_
 

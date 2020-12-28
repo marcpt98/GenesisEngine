@@ -11,6 +11,7 @@ enum ResourceType;
 enum ComponentType {
 	TRANSFORM,
 	MESH,
+	ANIMATION,
 	MATERIAL, 
 	CAMERA, 
 	LIGHT

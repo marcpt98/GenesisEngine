@@ -93,6 +93,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationImporter.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EditorWindow.h" />
@@ -198,7 +199,9 @@
     <ClInclude Include="ResourceMaterial.h" />
     <ClInclude Include="ResourceMesh.h" />
     <ClInclude Include="ResourceModel.h" />
+    <ClInclude Include="ResourceAnimation.h" />
     <ClInclude Include="ResourceTexture.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="TextureImporter.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Timer.h" />
@@ -212,6 +215,7 @@
     <ClInclude Include="WindowScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationImporter.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
@@ -279,7 +283,9 @@
     <ClCompile Include="ResourceMaterial.cpp" />
     <ClCompile Include="ResourceMesh.cpp" />
     <ClCompile Include="ResourceModel.cpp" />
+    <ClCompile Include="ResourceAnimation.cpp" />
     <ClCompile Include="ResourceTexture.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="TextureImporter.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Timer.cpp" />

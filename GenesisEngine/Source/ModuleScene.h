@@ -34,6 +34,12 @@ public:
 	bool Save(const char* file_path);
 	bool Load(const char* scene_file);
 
+	// Animations
+public:
+	void AddAnimation(uint64 UID);
+
+	std::vector<uint64> animations;
+
 public:
 	bool show_grid;
 	GameObject* selectedGameObject;

@@ -12,6 +12,7 @@
 #include "ResourceMesh.h"
 #include "ResourceMaterial.h"
 #include "ResourceTexture.h"
+#include "ResourceAnimation.h"
 
 #include "WindowImport.h"
 #include "WindowAssets.h"
@@ -34,6 +35,7 @@ bool ModuleResources::Init()
 
 	MeshImporter::Init();
 	TextureImporter::Init();
+	AnimationImporter::Init();
 
 	//std::vector<std::string> files;
 	//std::vector<std::string> dirs;
@@ -72,6 +74,7 @@ void ModuleResources::OnEditor()
 	std::vector<Resource*> meshes;
 	std::vector<Resource*> materials;
 	std::vector<Resource*> textures;
+	std::vector<Resource*> animations;
 
 	std::map<uint, Resource*>::iterator it = resources.begin();
 	for (it; it != resources.end(); it++)
@@ -80,6 +83,9 @@ void ModuleResources::OnEditor()
 		{
 		case ResourceType::RESOURCE_MESH:
 			meshes.push_back(it->second);
+			break;
+		case ResourceType::RESOURCE_ANIMATION:
+			animations.push_back(it->second);
 			break;
 		case ResourceType::RESOURCE_MATERIAL:
 			materials.push_back(it->second);
@@ -101,6 +107,22 @@ void ModuleResources::OnEditor()
 			ImGui::Text("Assets path: %s", meshes[i]->assetsFile.c_str());
 			ImGui::Text("Library path: %s", meshes[i]->libraryFile.c_str());
 			ImGui::Text("Reference count: %d", meshes[i]->referenceCount);
+			ImGui::Spacing();
+			ImGui::Separator();
+			ImGui::Spacing();
+		}
+		ImGui::TreePop();
+	}
+
+	if (ImGui::TreeNode("Animations")) {
+		ImGui::Separator();
+		for (size_t i = 0; i < animations.size(); i++)
+		{
+			ImGui::Text("Name: %s", animations[i]->name.c_str());
+			ImGui::Text("UID: %d", animations[i]->GetUID());
+			ImGui::Text("Assets path: %s", animations[i]->assetsFile.c_str());
+			ImGui::Text("Library path: %s", animations[i]->libraryFile.c_str());
+			ImGui::Text("Reference count: %d", animations[i]->referenceCount);
 			ImGui::Spacing();
 			ImGui::Separator();
 			ImGui::Spacing();
@@ -361,6 +383,9 @@ uint ModuleResources::ImportInternalResource(const char* path, const void* data,
 	case RESOURCE_MATERIAL:
 		MaterialImporter::Import((aiMaterial*)data, (ResourceMaterial*)resource);
 		break;
+	case RESOURCE_ANIMATION:
+		AnimationImporter::Import((aiAnimation*)data, (ResourceAnimation*)resource);
+		break;
 	default:
 		break;
 	}
@@ -555,6 +580,9 @@ Resource* ModuleResources::LoadResource(uint UID, ResourceType type)
 		case RESOURCE_MATERIAL:
 			ret = MaterialImporter::Load(buffer, (ResourceMaterial*)resource, size);
 			break;
+		case RESOURCE_ANIMATION:
+			ret = AnimationImporter::Load(buffer, (ResourceAnimation*)resource, size);
+			break;
 		case RESOURCE_TEXTURE:
 			ret = TextureImporter::Load(buffer, (ResourceTexture*)resource, size);
 			LoadMetaFile(resource);
@@ -592,6 +620,8 @@ void ModuleResources::UnloadResource(Resource* resource)
 		break;
 	case ResourceType::RESOURCE_MESH:
 		break;
+	case ResourceType::RESOURCE_ANIMATION:
+		break;
 	case ResourceType::RESOURCE_MATERIAL:
 		break;
 	case ResourceType::RESOURCE_TEXTURE:
@@ -624,6 +654,9 @@ Resource* ModuleResources::CreateResource(const char* assetsPath, ResourceType t
 		break;
 	case RESOURCE_MATERIAL:
 		resource = new ResourceMaterial(UID);
+		break;
+	case RESOURCE_ANIMATION:
+		resource = new ResourceAnimation(UID);
 		break;
 	case RESOURCE_TEXTURE:
 		resource = new ResourceTexture(UID);
@@ -663,6 +696,9 @@ Resource* ModuleResources::CreateResource(uint UID, ResourceType type, std::stri
 		break;
 	case RESOURCE_MESH:
 		resource = new ResourceMesh(UID);
+		break;
+	case RESOURCE_ANIMATION:
+		resource = new ResourceAnimation(UID);
 		break;
 	case RESOURCE_MATERIAL:
 		resource = new ResourceMaterial(UID);
@@ -774,6 +810,9 @@ bool ModuleResources::SaveResource(Resource* resource)
 	case RESOURCE_MESH:
 		size = MeshImporter::Save((ResourceMesh*)resource, &buffer);
 		break;
+	case RESOURCE_ANIMATION:
+		size = AnimationImporter::Save((ResourceAnimation*)resource, &buffer);
+		break;
 	case RESOURCE_MATERIAL:
 		size = MaterialImporter::Save((ResourceMaterial*)resource, &buffer);
 		break;
@@ -845,6 +884,9 @@ ResourceType ModuleResources::GetTypeFromPath(const char* path)
 	else if (extension == ".mesh")
 		return ResourceType::RESOURCE_MESH;
 
+	else if (extension == ".animation")
+		return ResourceType::RESOURCE_ANIMATION;
+
 	else if (extension == ".material")
 		return ResourceType::RESOURCE_MATERIAL;
 
@@ -873,6 +915,8 @@ const char* ModuleResources::GenerateLibraryPath(Resource* resource)
 		sprintf_s(library_path, 128, "Library/Models/%d.model", resource->GetUID()); break;
 	case RESOURCE_MESH:
 		sprintf_s(library_path, 128, "Library/Meshes/%d.mesh", resource->GetUID()); break;
+	case RESOURCE_ANIMATION:
+		sprintf_s(library_path, 128, "Library/Animation/%d.animation", resource->GetUID()); break;
 	case RESOURCE_MATERIAL:
 		sprintf_s(library_path, 128, "Library/Materials/%d.material", resource->GetUID()); break;
 	case RESOURCE_TEXTURE:
@@ -898,6 +942,10 @@ std::string ModuleResources::GenerateLibraryPath(uint uid, ResourceType type)
 	case RESOURCE_MESH:
 		path = "Library/Meshes/";
 		path.append(std::to_string(uid) + ".mesh");
+		break;
+	case RESOURCE_ANIMATION:
+		path = "Library/Animation/";
+		path.append(std::to_string(uid) + ".animation");
 		break;
 	case RESOURCE_MATERIAL:
 		path = "Library/Materials/";
@@ -929,6 +977,7 @@ std::string ModuleResources::GetLibraryFolder(const char* file_in_assets)
 	{
 	case RESOURCE_MODEL: return std::string("Library/Models/"); break;
 	case RESOURCE_MESH: return std::string("Library/Meshes/"); break;
+	case RESOURCE_ANIMATION: return std::string("Library/Animation/"); break;
 	case RESOURCE_MATERIAL: return std::string("Library/Materials/"); break;
 	case RESOURCE_TEXTURE: return std::string("Library/Textures/");	break;
 	case RESOURCE_SCENE: return std::string("Library/Scenes/");	break;
@@ -974,6 +1023,7 @@ void ModuleResources::AddFileExtension(std::string& file, ResourceType type)
 	{
 	case RESOURCE_MODEL: file += ".model"; break;
 	case RESOURCE_MESH: file += ".mesh"; break;
+	case RESOURCE_ANIMATION: file += ".animation"; break;
 	case RESOURCE_MATERIAL: file += ".material"; break;
 	case RESOURCE_TEXTURE: file += ".dds"; break;
 	case RESOURCE_SCENE:  file += ".scene";	break;

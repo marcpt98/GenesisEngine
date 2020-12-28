@@ -230,6 +230,15 @@
     <ClCompile Include="TextureImporter.cpp">
       <Filter>FileManagement\Importers</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>GameObjects &amp; Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceAnimation.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationImporter.cpp">
+      <Filter>FileManagement\Importers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -573,6 +582,15 @@
       <Filter>FileManagement\Importers</Filter>
     </ClInclude>
     <ClInclude Include="Importers.h">
+      <Filter>FileManagement\Importers</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>GameObjects &amp; Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceAnimation.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationImporter.h">
       <Filter>FileManagement\Importers</Filter>
     </ClInclude>
   </ItemGroup>

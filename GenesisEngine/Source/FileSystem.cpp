@@ -61,6 +61,7 @@ void FileSystem::CreateLibraryDirectories()
 	CreateDir("Library/Config/");
 	CreateDir("Library/Models/");
 	CreateDir("Library/Meshes/");
+	CreateDir("Library/Animation/");
 	CreateDir("Library/Materials/");
 	CreateDir("Library/Textures/");
 	CreateDir("Library/Scenes/");
