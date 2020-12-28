@@ -524,7 +524,8 @@ bool ModuleResources::DeleteInternalResources(uint UID)
 	{
 		std::vector<uint> meshes;
 		std::vector<uint> materials;
-		ModelImporter::ExtractInternalResources(resources_data[UID].libraryFile.c_str(), meshes, materials);
+		std::vector<uint> animations;
+		ModelImporter::ExtractInternalResources(resources_data[UID].libraryFile.c_str(), meshes, materials, animations);
 
 		for (size_t i = 0; i < meshes.size(); i++) 
 		{
@@ -534,6 +535,11 @@ bool ModuleResources::DeleteInternalResources(uint UID)
 		for (size_t i = 0; i < materials.size(); i++) 
 		{
 			DeleteInternalResource(materials[i]);
+		}
+
+		for (size_t i = 0; i < animations.size(); i++)
+		{
+			DeleteInternalResource(animations[i]);
 		}
 	}
 

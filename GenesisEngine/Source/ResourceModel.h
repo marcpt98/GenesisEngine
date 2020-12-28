@@ -16,6 +16,7 @@ struct ModelNode
 
 	int meshID = -1;
 	int materialID = -1;
+	int animationID = -1;
 
 	uint UID = 0u;
 	uint parentUID = 0u;
@@ -32,6 +33,7 @@ public:
 public:
 	std::vector<ModelNode> nodes;
 	std::vector<uint> meshes;
+	std::vector<uint> animations;
 	std::vector<uint> materials;
 	std::vector<uint> textures;
 	std::vector<Light*> lights;

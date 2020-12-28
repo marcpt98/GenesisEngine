@@ -293,7 +293,8 @@ void WindowAssets::DrawModelInternalResources(const char* file_name)
 
 		std::vector<uint> meshes;
 		std::vector<uint> materials;
-		ModelImporter::ExtractInternalResources(library_path, meshes, materials);
+		std::vector<uint> animations;
+		ModelImporter::ExtractInternalResources(library_path, meshes, materials, animations);
 
 		for (size_t m = 0; m < meshes.size(); m++)
 		{

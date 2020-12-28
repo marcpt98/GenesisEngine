@@ -9,6 +9,7 @@
 class Resource;
 class ResourceModel;
 class ResourceMesh;
+class ResourceAnimation;
 
 struct ModelNode;
 class GnJSONArray;
@@ -36,7 +37,7 @@ namespace ModelImporter
 	bool Load(char* fileBuffer, ResourceModel* model, uint size);
 
 	GameObject* ConvertToGameObject(ResourceModel* model);
-	void ExtractInternalResources(const char* path, std::vector<uint>& meshes, std::vector<uint>& materials);
+	void ExtractInternalResources(const char* path, std::vector<uint>& meshes, std::vector<uint>& materials, std::vector<uint>& animations);
 	void ExtractInternalResources(const char* meta_file, ResourceModel& model);
 	bool InternalResourcesExist(const char* path);
 	void ConvertToDesiredAxis(aiNode* node, ModelNode& modelNode);

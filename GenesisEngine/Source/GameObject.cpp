@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "Transform.h"
 #include "Mesh.h"
+#include "Animation.h"
 #include "Material.h"
 #include "Camera.h"
 #include "ImGui/imgui.h"
@@ -220,6 +221,9 @@ Component* GameObject::AddComponent(ComponentType type)
 		break;
 	case MESH:
 		component = new GnMesh();
+		break;
+	case ANIMATION:
+		component = new Animation();
 		break;
 	case MATERIAL:
 		component = new Material(this);

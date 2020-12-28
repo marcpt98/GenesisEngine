@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include "Transform.h"
 #include "Mesh.h"
+#include "Animation.h"
 #include "Material.h"
 #include "Camera.h"
 
@@ -36,6 +37,12 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 		{
 			aiMaterial* aimaterial = scene->mMaterials[i];
 			model->materials.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aimaterial, ResourceType::RESOURCE_MATERIAL));
+		}
+
+		for (size_t i = 0; i < scene->mNumAnimations; i++)
+		{
+			aiAnimation* aianimation = scene->mAnimations[i];
+			model->animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
 		}
 
 		if (!App->resources->modelImportingOptions.ignoreLights)
@@ -121,8 +128,10 @@ void ModelImporter::ImportChildren(const aiScene* scene, aiNode* ainode, aiNode*
 			//Materials ----------------------------------------------------------
 			aiMesh* aimesh = scene->mMeshes[*ainode->mMeshes];
 			modelNode.materialID = model->materials[aimesh->mMaterialIndex];
-		}
 
+			//Animations ---------------------------------------------------------
+			modelNode.animationID = model->animations[aimesh->mNumAnimMeshes];
+		}
 		
 		if(modelNode.name.find(".Target") == std::string::npos)
 			model->nodes.push_back(modelNode);
@@ -174,6 +183,12 @@ uint64 ModelImporter::Save(ResourceModel* model, char** fileBuffer)
 		{
 			node_object.AddInt("MaterialID", model->nodes[i].materialID);
 			node_object.AddString("material_library_path", App->resources->GenerateLibraryPath(model->nodes[i].materialID, ResourceType::RESOURCE_MATERIAL).c_str());
+		}
+
+		if (model->nodes[i].animationID != -1)
+		{
+			node_object.AddInt("AnimationID", model->nodes[i].animationID);
+			node_object.AddString("animation_library_path", App->resources->GenerateLibraryPath(model->nodes[i].animationID, ResourceType::RESOURCE_ANIMATION).c_str());
 		}
 
 		nodes_array.AddObject(node_object);
@@ -242,6 +257,16 @@ void ModelImporter::ReimportFile(char* fileBuffer, ResourceModel* newModel, uint
 						FileSystem::Rename(newModelPath.c_str(), oldModelPath.c_str());
 				}
 
+				if (oldModel.nodes[o].animationID != -1)
+				{
+					std::string oldModelPath = App->resources->GenerateLibraryPath(oldModel.nodes[o].animationID, ResourceType::RESOURCE_ANIMATION);
+					std::string newModelPath = App->resources->GenerateLibraryPath(newModel->nodes[n].animationID, ResourceType::RESOURCE_ANIMATION);
+					newModel->nodes[n].animationID = oldModel.nodes[o].animationID;
+
+					if (FileSystem::Exists(newModelPath.c_str()))
+						FileSystem::Rename(newModelPath.c_str(), oldModelPath.c_str());
+				}
+
 				break;
 			}
 		}
@@ -278,6 +303,7 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 
 	std::unordered_set<uint> meshes;
 	std::unordered_set<uint> materials;
+	std::unordered_set<uint> animations;
 
 	for (size_t i = 0; i < nodes_array.Size(); i++)
 	{
@@ -312,6 +338,17 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 				//ret = false;
 		}
 
+		modelNode.animationID = nodeObject.GetInt("AnimationID");
+		if (modelNode.animationID != -1)
+		{
+			App->resources->CreateResourceData(modelNode.animationID, modelNode.name.c_str(),
+				model->assetsFile.c_str(), nodeObject.GetString("animation_library_path", "No Path"));
+			animations.emplace(modelNode.animationID);
+
+			//if (App->resources->LoadResource(modelNode.materialID, ResourceType::RESOURCE_MATERIAL) == nullptr)
+				//ret = false;
+		}
+
 		model->nodes.push_back(modelNode);
 	}
 
@@ -322,6 +359,11 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 
 	for (auto it = materials.begin(); it != materials.end(); ++it) {
 		if (App->resources->LoadResource(*it, ResourceType::RESOURCE_MATERIAL) == nullptr)
+			ret = false;
+	}
+
+	for (auto it = animations.begin(); it != animations.end(); ++it) {
+		if (App->resources->LoadResource(*it, ResourceType::RESOURCE_ANIMATION) == nullptr)
 			ret = false;
 	}
 
@@ -380,6 +422,12 @@ GameObject* ModelImporter::ConvertToGameObject(ResourceModel* model)
 			material->SetResourceUID(model->nodes[i].materialID);
 		}
 
+		if (model->nodes[i].animationID != -1)
+		{
+			Animation* animation = (Animation*)gameObject->AddComponent(ComponentType::ANIMATION);
+			animation->SetResourceUID(model->nodes[i].animationID);
+		}
+
 		if (model->nodes[i].parentUID == 0)
 			root = gameObject;
 
@@ -424,7 +472,7 @@ GameObject* ModelImporter::ConvertToGameObject(ResourceModel* model)
 	return root;
 }
 
-void ModelImporter::ExtractInternalResources(const char* path, std::vector<uint>& meshes, std::vector<uint>& materials)
+void ModelImporter::ExtractInternalResources(const char* path, std::vector<uint>& meshes, std::vector<uint>& materials, std::vector<uint>& animations)
 {
 	char* buffer = nullptr;
 	uint size = FileSystem::Load(path, &buffer);
@@ -452,6 +500,15 @@ void ModelImporter::ExtractInternalResources(const char* path, std::vector<uint>
 				materials.push_back(materialID);
 			}
 		}
+
+		int animationID = nodeObject.GetInt("AnimationID");
+		if (animationID != -1)
+		{
+			//avoid duplicating animations
+			if (std::find(animations.begin(), animations.end(), animationID) == animations.end()) {
+				animations.push_back(animationID);
+			}
+		}
 	}
 
 	model_data.Release();
@@ -473,6 +530,7 @@ void ModelImporter::ExtractInternalResources(const char* meta_file, ResourceMode
 		modelNode.name = nodeObject.GetString("Name", "No Name");
 		modelNode.meshID = nodeObject.GetInt("MeshID");
 		modelNode.materialID = nodeObject.GetInt("MaterialID");
+		modelNode.animationID = nodeObject.GetInt("AnimationID");
 
 		model.nodes.push_back(modelNode);
 	}
@@ -531,6 +589,22 @@ bool ModelImporter::InternalResourcesExist(const char* path)
 			else
 			{
 				App->resources->CreateResourceData(materialID, nodeName.c_str(), assets_file.c_str(), materialLibraryPath.c_str());
+			}
+		}
+
+		int animationID = nodeObject.GetInt("AnimationID");
+		if (animationID != -1)
+		{
+			std::string animationLibraryPath = nodeObject.GetString("animation_library_path", "No path");
+
+			if (!FileSystem::Exists(animationLibraryPath.c_str())) {
+				ret = false;
+				LOG_ERROR("Animation: %s not found", animationLibraryPath.c_str());
+				break;
+			}
+			else
+			{
+				App->resources->CreateResourceData(animationID, nodeName.c_str(), assets_file.c_str(), animationLibraryPath.c_str());
 			}
 		}
 	}

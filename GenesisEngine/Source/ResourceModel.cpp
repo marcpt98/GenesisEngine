@@ -11,6 +11,7 @@ ResourceModel::~ResourceModel()
 {
 	nodes.clear();
 	meshes.clear();
+	animations.clear();
 	materials.clear();
 	textures.clear();
 
@@ -70,6 +71,12 @@ uint ResourceModel::SaveMeta(GnJSONObj& base_object, uint last_modification)
 		{
 			node_object.AddInt("MaterialID", nodes[i].materialID);
 			node_object.AddString("material_library_path", App->resources->GetLibraryPath(nodes[i].materialID));
+		}
+
+		if (nodes[i].animationID != -1)
+		{
+			node_object.AddInt("AnimationID", nodes[i].animationID);
+			node_object.AddString("animation_library_path", App->resources->GetLibraryPath(nodes[i].animationID));
 		}
 
 		nodes_array.AddObject(node_object);

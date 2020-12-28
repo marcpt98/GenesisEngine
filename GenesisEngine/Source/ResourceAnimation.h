@@ -22,13 +22,13 @@ struct Channel
 
 	// Transforms
 	uint chan_NumPosKeys = 0;
-	std::vector<VecKey*> chan_PosKeys;
+	std::vector<VecKey> chan_PosKeys;
 
 	uint chan_NumScaleKeys = 0;
-	std::vector<VecKey*> chan_ScaleKeys;
+	std::vector<VecKey> chan_ScaleKeys;
 
 	uint chan_NumRotKeys = 0;
-	std::vector<QuatKey*> chan_RotKeys;
+	std::vector<QuatKey> chan_RotKeys;
 };
 
 class ResourceAnimation : public Resource
@@ -38,8 +38,6 @@ public:
 	~ResourceAnimation();
 
 public:
-	std::string anim_Name;
-
 	float anim_Duration;
 	float anim_TicksPerSecond;
 
