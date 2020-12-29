@@ -4,7 +4,9 @@
 
 class ResourceAnimation;
 
+struct Channel;
 class aiAnimation;
+
 
 namespace AnimationImporter
 {
@@ -13,6 +15,7 @@ namespace AnimationImporter
 
 	void Import(const aiAnimation* aianimation, ResourceAnimation* animation);
 	uint64 Save(ResourceAnimation* animation, char** fileBuffer);
+	void SaveChannel(const Channel& channel, char** cursor);
 	bool Load(char* fileBuffer, ResourceAnimation* animation, uint size);
 }
 

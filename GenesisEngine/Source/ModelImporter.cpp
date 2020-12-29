@@ -128,9 +128,6 @@ void ModelImporter::ImportChildren(const aiScene* scene, aiNode* ainode, aiNode*
 			//Materials ----------------------------------------------------------
 			aiMesh* aimesh = scene->mMeshes[*ainode->mMeshes];
 			modelNode.materialID = model->materials[aimesh->mMaterialIndex];
-
-			//Animations ---------------------------------------------------------
-			modelNode.animationID = model->animations[aimesh->mNumAnimMeshes];
 		}
 		
 		if(modelNode.name.find(".Target") == std::string::npos)

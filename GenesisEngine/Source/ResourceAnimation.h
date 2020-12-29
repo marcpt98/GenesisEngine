@@ -22,13 +22,13 @@ struct Channel
 
 	// Transforms
 	uint chan_NumPosKeys = 0;
-	std::vector<VecKey> chan_PosKeys;
+	std::map<double, float3> chan_PosKeys;
 
 	uint chan_NumScaleKeys = 0;
-	std::vector<VecKey> chan_ScaleKeys;
+	std::map<double, float3> chan_ScaleKeys;
 
 	uint chan_NumRotKeys = 0;
-	std::vector<QuatKey> chan_RotKeys;
+	std::map<double, Quat> chan_RotKeys;
 };
 
 class ResourceAnimation : public Resource
