@@ -44,7 +44,7 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 			aiAnimation* aianimation = scene->mAnimations[i];
 			model->animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
 		}
-
+		
 		if (!App->resources->modelImportingOptions.ignoreLights)
 		{
 			for (size_t i = 0; i < scene->mNumLights; i++)

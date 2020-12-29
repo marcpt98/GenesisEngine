@@ -118,7 +118,7 @@ uint64 AnimationImporter::Save(ResourceAnimation* animation, char** fileBuffer)
 	return size;
 }
 
-void AnimationImporter::SaveChannel(const Channel& channel, char** cursor)
+void AnimationImporter::SaveChannel(Channel& channel, char** cursor)
 {
 	// Name
 	uint chan_size = channel.chan_Name.size();
@@ -169,8 +169,77 @@ bool AnimationImporter::Load(char* fileBuffer, ResourceAnimation* animation, uin
 	timer.Start();
 
 	// Load animation
+	char* cursor = fileBuffer;
+	uint bytes;
+
+	memcpy(&animation->anim_Duration, cursor, sizeof(float));
+	cursor += sizeof(float);
+
+	memcpy(&animation->anim_TicksPerSecond, cursor, sizeof(float));
+	cursor += sizeof(float);
 
 	// Load channels
+	uint chan_size = 0;
+	memcpy(&chan_size, cursor, sizeof(uint));
+	cursor += sizeof(uint);
 
+	for (int i = 0; i < chan_size; ++i)
+	{
+		Channel channel;
+
+		LoadChannel(channel, &cursor);
+	}
+	LOG("ANIMATION LOADED");
 	return ret;
+}
+
+void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
+{
+	uint bytes = 0;
+
+	// Name
+	uint name_size = 0;
+	memcpy(&name_size, *cursor, sizeof(uint));
+	*cursor += sizeof(uint);
+
+	// Transforms
+	uint ranges[3];
+	memcpy(&ranges, *cursor, sizeof(uint) * 3);
+	*cursor += sizeof(uint) * 3;
+
+	for (int i = 0; i < ranges[0]; i++)
+	{
+		double time;
+		memcpy(&time, *cursor, sizeof(double));
+		*cursor += sizeof(double);
+		float data[3];
+		memcpy(&data, *cursor, sizeof(float) * 3);
+		*cursor += sizeof(float) * 3;
+
+		channel.chan_PosKeys[time] = float3(data);
+	}
+
+	for (int i = 0; i < ranges[1]; i++)
+	{
+		double time;
+		memcpy(&time, *cursor, sizeof(double));
+		*cursor += sizeof(double);
+		float data[3];
+		memcpy(&data, *cursor, sizeof(float) * 3);
+		*cursor += sizeof(float) * 3;
+
+		channel.chan_ScaleKeys[time] = float3(data);
+	}
+
+	for (int i = 0; i < ranges[2]; i++)
+	{
+		double time;
+		memcpy(&time, *cursor, sizeof(double));
+		*cursor += sizeof(double);
+		float data[3];
+		memcpy(&data, *cursor, sizeof(float) * 4);
+		*cursor += sizeof(float) * 4;
+
+		channel.chan_RotKeys[time] = Quat(data);
+	}
 }
