@@ -13,6 +13,7 @@
 #include "ResourceMaterial.h"
 #include "ResourceTexture.h"
 #include "ResourceAnimation.h"
+#include "ResourceAnimationManager.h"
 
 #include "WindowImport.h"
 #include "WindowAssets.h"
@@ -589,6 +590,9 @@ Resource* ModuleResources::LoadResource(uint UID, ResourceType type)
 		case RESOURCE_ANIMATION:
 			ret = AnimationImporter::Load(buffer, (ResourceAnimation*)resource, size);
 			break;
+		case RESOURCE_ANIMATION_MANAGER:
+			ret = AnimationManagerImporter::Load(buffer, (ResourceAnimationManager*)resource, size);
+			break;
 		case RESOURCE_TEXTURE:
 			ret = TextureImporter::Load(buffer, (ResourceTexture*)resource, size);
 			LoadMetaFile(resource);
@@ -628,6 +632,8 @@ void ModuleResources::UnloadResource(Resource* resource)
 		break;
 	case ResourceType::RESOURCE_ANIMATION:
 		break;
+	case ResourceType::RESOURCE_ANIMATION_MANAGER:
+		break;
 	case ResourceType::RESOURCE_MATERIAL:
 		break;
 	case ResourceType::RESOURCE_TEXTURE:
@@ -663,6 +669,9 @@ Resource* ModuleResources::CreateResource(const char* assetsPath, ResourceType t
 		break;
 	case RESOURCE_ANIMATION:
 		resource = new ResourceAnimation(UID);
+		break;
+	case RESOURCE_ANIMATION_MANAGER:
+		resource = new ResourceAnimationManager(UID);
 		break;
 	case RESOURCE_TEXTURE:
 		resource = new ResourceTexture(UID);
@@ -705,6 +714,9 @@ Resource* ModuleResources::CreateResource(uint UID, ResourceType type, std::stri
 		break;
 	case RESOURCE_ANIMATION:
 		resource = new ResourceAnimation(UID);
+		break;
+	case RESOURCE_ANIMATION_MANAGER:
+		resource = new ResourceAnimationManager(UID);
 		break;
 	case RESOURCE_MATERIAL:
 		resource = new ResourceMaterial(UID);
@@ -819,6 +831,9 @@ bool ModuleResources::SaveResource(Resource* resource)
 	case RESOURCE_ANIMATION:
 		size = AnimationImporter::Save((ResourceAnimation*)resource, &buffer);
 		break;
+	case RESOURCE_ANIMATION_MANAGER:
+		size = AnimationManagerImporter::Save((ResourceAnimationManager*)resource, &buffer);
+		break;
 	case RESOURCE_MATERIAL:
 		size = MaterialImporter::Save((ResourceMaterial*)resource, &buffer);
 		break;
@@ -892,6 +907,9 @@ ResourceType ModuleResources::GetTypeFromPath(const char* path)
 
 	else if (extension == ".animation")
 		return ResourceType::RESOURCE_ANIMATION;
+
+	else if (extension == ".animationmanager")
+		return ResourceType::RESOURCE_ANIMATION_MANAGER;
 
 	else if (extension == ".material")
 		return ResourceType::RESOURCE_MATERIAL;
@@ -1030,6 +1048,7 @@ void ModuleResources::AddFileExtension(std::string& file, ResourceType type)
 	case RESOURCE_MODEL: file += ".model"; break;
 	case RESOURCE_MESH: file += ".mesh"; break;
 	case RESOURCE_ANIMATION: file += ".animation"; break;
+	case RESOURCE_ANIMATION_MANAGER: file += ".animationmanager"; break;
 	case RESOURCE_MATERIAL: file += ".material"; break;
 	case RESOURCE_TEXTURE: file += ".dds"; break;
 	case RESOURCE_SCENE:  file += ".scene";	break;

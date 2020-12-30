@@ -142,11 +142,6 @@ void ModuleScene::PreorderGameObjects(GameObject* gameObject, std::vector<GameOb
 	}
 }
 
-void ModuleScene::AddAnimation(uint64 UID)
-{
-	animations.push_back(UID);
-}
-
 void ModuleScene::EditTransform()
 {
 	if (selectedGameObject == nullptr)

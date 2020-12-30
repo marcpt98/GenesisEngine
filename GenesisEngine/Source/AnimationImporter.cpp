@@ -243,3 +243,15 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 		channel.chan_RotKeys[time] = Quat(data);
 	}
 }
+
+uint64 AnimationManagerImporter::Save(ResourceAnimationManager* animationmanager, char** buffer)
+{
+
+	return 0;
+}
+
+bool AnimationManagerImporter::Load(char* buffer, ResourceAnimationManager* animationmanager, uint size)
+{
+
+	return true;
+}

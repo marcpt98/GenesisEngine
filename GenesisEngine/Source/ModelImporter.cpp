@@ -11,6 +11,7 @@
 #include "Camera.h"
 
 #include "ResourceModel.h"
+#include "ResourceAnimationManager.h"
 
 #include "Assimp/Assimp/include/cimport.h"
 #include "Assimp/Assimp/include/scene.h"
@@ -24,6 +25,8 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 
 	const aiScene* scene = nullptr;
 	scene = aiImportFileFromMemory(fileBuffer, size, aiProcessPreset_TargetRealtime_MaxQuality, NULL);
+
+	std::vector<uint64> animations;
 
 	if (scene != nullptr && scene->HasMeshes())
 	{
@@ -39,10 +42,20 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 			model->materials.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aimaterial, ResourceType::RESOURCE_MATERIAL));
 		}
 
-		for (size_t i = 0; i < scene->mNumAnimations; i++)
+		if (scene->mNumAnimations > 0)
 		{
-			aiAnimation* aianimation = scene->mAnimations[i];
-			model->animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
+			ResourceAnimationManager* animationmanager = nullptr;
+			animationmanager = (ResourceAnimationManager*)App->resources->CreateResource(App->resources->GenerateUID(), RESOURCE_ANIMATION_MANAGER, "assets/models/skeleton_model/animation.animationmanager");
+
+			for (size_t i = 0; i < scene->mNumAnimations; i++)
+			{
+				aiAnimation* aianimation = scene->mAnimations[i];
+				animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
+				animationmanager->AddAnimation(animations.back());
+			}
+
+			model->animations.push_back(animationmanager->GetUID());
+			App->resources->SaveResource(animationmanager);
 		}
 		
 		if (!App->resources->modelImportingOptions.ignoreLights)
