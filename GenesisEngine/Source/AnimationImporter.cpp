@@ -60,12 +60,12 @@ void AnimationImporter::Import(const aiAnimation* aianimation, ResourceAnimation
 		for (int j = 0; j < aianim->mNumScalingKeys; j++)
 		{
 			aiVectorKey sclkey = aianim->mScalingKeys[j];
-			channel.chan_PosKeys[sclkey.mTime] = float3(sclkey.mValue.x, sclkey.mValue.y, sclkey.mValue.z);
+			channel.chan_ScaleKeys[sclkey.mTime] = float3(sclkey.mValue.x, sclkey.mValue.y, sclkey.mValue.z);
 		}
 		for (int j = 0; j < aianim->mNumRotationKeys; j++)
 		{
 			aiQuatKey rotkey = aianim->mRotationKeys[j];
-			channel.chan_PosKeys[rotkey.mTime] = float3(rotkey.mValue.x, rotkey.mValue.y, rotkey.mValue.z);
+			channel.chan_RotKeys[rotkey.mTime] = Quat(rotkey.mValue.x, rotkey.mValue.y, rotkey.mValue.z, rotkey.mValue.w);
 		}
 
 		animation->anim_Channels.push_back(channel);
