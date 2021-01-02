@@ -56,7 +56,7 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 			animationmanager->SetUID(animations.back());
 			char* library_path = new char[128];
 			animationmanager->libraryFile = "assets/models/skeleton_model/animation.animationmanager";
-			model->animations.push_back(animationmanager->GetUID());
+			model->animations.push_back(animationmanager);
 			App->resources->SaveResource(animationmanager);
 		}
 		
@@ -184,6 +184,12 @@ uint64 ModelImporter::Save(ResourceModel* model, char** fileBuffer)
 		node_object.AddFloat3("Position", model->nodes[i].position);
 		node_object.AddQuaternion("Rotation", model->nodes[i].rotation);
 		node_object.AddFloat3("Scale", model->nodes[i].scale);
+
+		if (!model->animations.empty() && i == 0)
+		{
+			node_object.AddInt("AnimationID", model->animations[0]->GetUID());
+			node_object.AddString("animation_library_path", App->resources->GenerateLibraryPath(model->animations[0]->GetUID(), ResourceType::RESOURCE_ANIMATION).c_str());
+		}
 
 		if (model->nodes[i].meshID != -1)
 		{
