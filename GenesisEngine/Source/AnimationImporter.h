@@ -7,7 +7,7 @@ class ResourceAnimationManager;
 
 struct Channel;
 class aiAnimation;
-
+class GnJSONArray;
 
 namespace AnimationImporter
 {

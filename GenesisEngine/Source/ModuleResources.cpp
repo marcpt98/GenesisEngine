@@ -846,13 +846,13 @@ bool ModuleResources::SaveResource(Resource* resource)
 		break;
 	}
 
-	if (size > 0) 
+	if (size > 0)
 	{
 		FileSystem::Save(resource->libraryFile.c_str(), buffer, size);
 		RELEASE_ARRAY(buffer);
 	}
 
-	if(resource->GetType() == ResourceType::RESOURCE_MODEL || resource->GetType() == ResourceType::RESOURCE_TEXTURE)
+	if(resource->GetType() == ResourceType::RESOURCE_MODEL || resource->GetType() == ResourceType::RESOURCE_TEXTURE || resource->GetType() == ResourceType::RESOURCE_ANIMATION_MANAGER)
 		ret = SaveMetaFile(resource);
 
 	return ret;
@@ -1123,6 +1123,10 @@ void ModuleResources::CleanLibrary()
 		for (size_t i = 0; i < files.size(); i++)
 		{
 			if (files[i].find(".meta") != std::string::npos)
+			{
+				FileSystem::Delete(files[i].c_str());
+			}
+			if (files[i].find(".animationmanager") != std::string::npos)
 			{
 				FileSystem::Delete(files[i].c_str());
 			}
