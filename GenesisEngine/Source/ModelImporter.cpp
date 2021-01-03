@@ -188,7 +188,7 @@ uint64 ModelImporter::Save(ResourceModel* model, char** fileBuffer)
 		if (!model->animations.empty() && i == 0)
 		{
 			node_object.AddInt("AnimationID", model->animations[0]->GetUID());
-			node_object.AddString("animation_library_path", App->resources->GenerateLibraryPath(model->animations[0]->GetUID(), ResourceType::RESOURCE_ANIMATION).c_str());
+			node_object.AddString("animation_library_path", App->resources->GenerateLibraryPath(model->animations[0]->GetUID(), ResourceType::RESOURCE_ANIMATION).c_str() );
 		}
 
 		if (model->nodes[i].meshID != -1)
