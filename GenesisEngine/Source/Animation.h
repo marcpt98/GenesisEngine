@@ -21,6 +21,11 @@ public:
 	virtual void Render();
 	virtual void OnEditor() override;
 
+	void Save(GnJSONArray& save_array) override;
+	void Load(GnJSONObj& load_object) override;
+	void SetResourceUID(uint UID) override;
+	Resource* GetResource(ResourceType type) override;
+
 public:
 	ResourceAnimation* _resource;
 

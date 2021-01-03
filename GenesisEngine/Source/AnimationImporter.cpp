@@ -189,6 +189,8 @@ bool AnimationImporter::Load(char* fileBuffer, ResourceAnimation* animation, uin
 		Channel channel;
 
 		LoadChannel(channel, &cursor);
+
+		animation->anim_NumChannels++;
 	}
 	LOG("ANIMATION LOADED");
 	return ret;
