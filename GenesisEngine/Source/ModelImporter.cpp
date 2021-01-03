@@ -305,6 +305,7 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 
 	std::unordered_set<uint> meshes;
 	std::unordered_set<uint> materials;
+	std::unordered_set<uint> animations;
 
 	for (size_t i = 0; i < nodes_array.Size(); i++)
 	{
@@ -339,6 +340,17 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 				//ret = false;
 		}
 
+		modelNode.animationID = nodeObject.GetInt("AnimationID");
+		if (modelNode.animationID != -1)
+		{
+			App->resources->CreateResourceData(modelNode.animationID, modelNode.name.c_str(),
+				model->assetsFile.c_str(), nodeObject.GetString("animation_library_path", "No Path"));
+			animations.emplace(modelNode.animationID);
+
+			//if (App->resources->LoadResource(modelNode.materialID, ResourceType::RESOURCE_MATERIAL) == nullptr)
+				//ret = false;
+		}
+
 		model->nodes.push_back(modelNode);
 	}
 
@@ -349,6 +361,11 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 
 	for (auto it = materials.begin(); it != materials.end(); ++it) {
 		if (App->resources->LoadResource(*it, ResourceType::RESOURCE_MATERIAL) == nullptr)
+			ret = false;
+	}
+
+	for (auto it = animations.begin(); it != animations.end(); ++it) {
+		if (App->resources->LoadResource(*it, ResourceType::RESOURCE_ANIMATION) == nullptr)
 			ret = false;
 	}
 
@@ -407,7 +424,7 @@ GameObject* ModelImporter::ConvertToGameObject(ResourceModel* model)
 			material->SetResourceUID(model->nodes[i].materialID);
 		}
 
-		if (model->animations.size() != 0 && i == 0)
+		if (model->nodes[i].animationID != -1)
 		{
 			Animation* animation = (Animation*)gameObject->AddComponent(ComponentType::ANIMATION);
 			animation->SetResourceUID(model->nodes[i].animationID);

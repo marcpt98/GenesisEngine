@@ -203,6 +203,15 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 	memcpy(&name_size, *cursor, sizeof(uint));
 	*cursor += sizeof(uint);
 
+	char* newname = new char[name_size + 1];
+	bytes = sizeof(char) * name_size;
+	memcpy(newname, *cursor, bytes);
+	*cursor += bytes;
+	
+	newname[name_size] = '\0';
+	channel.chan_Name = newname;
+	RELEASE_ARRAY(newname);
+
 	// Transforms
 	uint ranges[3];
 	memcpy(&ranges, *cursor, sizeof(uint) * 3);
@@ -237,7 +246,7 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 		double time;
 		memcpy(&time, *cursor, sizeof(double));
 		*cursor += sizeof(double);
-		float data[3];
+		float data[4];
 		memcpy(&data, *cursor, sizeof(float) * 4);
 		*cursor += sizeof(float) * 4;
 
