@@ -19,6 +19,8 @@ Animation::Animation() : Component(), name("No name"), _resource(nullptr)
 
 	name = nullptr;
 	path = nullptr;
+	rootChannel = nullptr;
+	init = false;
 }
 
 Animation::~Animation()
@@ -30,9 +32,62 @@ Animation::~Animation()
 	}
 }
 
+void Animation::InitAnimation()
+{
+	anim_channels.clear();
+
+	// Get root gameobject with all channels
+	rootChannel = _gameObject->children[1]->children[0];
+
+	std::vector<GameObject*> channels;
+
+	rootChannel->SetChannelHierarchy(channels);
+
+	for (uint i = 0; i < channels.size(); ++i)
+	{
+		anim_channels[channels[i]->name] = channels[i];
+	}
+}
+
 void Animation::Update()
 {
+	if (init == false)
+	{
+		InitAnimation();
+		init = true;
+	}
+	
 	Render();
+}
+
+void Animation::Render()
+{
+	for (std::map<std::string, GameObject*>::const_iterator it = anim_channels.begin(); it != anim_channels.end(); it++)
+	{
+		for (int i = 0; i < it->second->GetChildrenAmount(); i++)
+		{
+			float4x4 start = float4x4::zero;
+			float4x4 end = float4x4::zero;
+
+			start = it->second->GetTransform()->GetGlobalTransform();
+			end = it->second->GetChildAt(i)->GetTransform()->GetGlobalTransform();
+
+			float3 startpos = float3::zero;
+			float3 endpos = float3::zero;
+
+			float3 _position = float3::zero;
+			float3 _scale = float3::zero;
+			Quat _rotation = Quat::identity;
+
+			start.Decompose(_position, _rotation, _scale);
+			startpos = _position;
+
+			end.Decompose(_position, _rotation, _scale);
+			endpos = _position;
+
+			App->renderer3D->DrawCustomRay(startpos, endpos);
+		}
+	}
 }
 
 void Animation::Save(GnJSONArray& save_array)
@@ -63,11 +118,6 @@ void Animation::SetResourceUID(uint UID)
 Resource* Animation::GetResource(ResourceType type)
 {
 	return _resource;
-}
-
-void Animation::Render()
-{
-
 }
 
 void Animation::OnEditor()

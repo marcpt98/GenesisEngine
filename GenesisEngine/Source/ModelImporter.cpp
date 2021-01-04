@@ -325,8 +325,6 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 			App->resources->CreateResourceData(modelNode.meshID, modelNode.name.c_str(),
 				model->assetsFile.c_str(), nodeObject.GetString("mesh_library_path", "No Path"));
 			meshes.emplace(modelNode.meshID);
-			//if (App->resources->LoadResource(modelNode.meshID, ResourceType::RESOURCE_MESH) == nullptr)
-				//ret = false;
 		}
 
 		modelNode.materialID = nodeObject.GetInt("MaterialID");
@@ -335,9 +333,6 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 			App->resources->CreateResourceData(modelNode.materialID, modelNode.name.c_str(),
 				model->assetsFile.c_str(), nodeObject.GetString("material_library_path", "No Path"));
 			materials.emplace(modelNode.materialID);
-
-			//if (App->resources->LoadResource(modelNode.materialID, ResourceType::RESOURCE_MATERIAL) == nullptr)
-				//ret = false;
 		}
 
 		modelNode.animationID = nodeObject.GetInt("AnimationID");
@@ -346,9 +341,6 @@ bool ModelImporter::Load(char* fileBuffer, ResourceModel* model, uint size)
 			App->resources->CreateResourceData(modelNode.animationID, modelNode.name.c_str(),
 				model->assetsFile.c_str(), nodeObject.GetString("animation_library_path", "No Path"));
 			animations.emplace(modelNode.animationID);
-
-			//if (App->resources->LoadResource(modelNode.materialID, ResourceType::RESOURCE_MATERIAL) == nullptr)
-				//ret = false;
 		}
 
 		model->nodes.push_back(modelNode);

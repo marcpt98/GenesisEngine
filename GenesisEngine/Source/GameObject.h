@@ -33,6 +33,7 @@ public:
 	Component* AddComponent(ComponentType type);
 	void AddComponent(Component* component);
 	bool RemoveComponent(Component* component);
+	void SetChannelHierarchy(std::vector<GameObject*>& channels);
 
 	const char* GetName();
 	void SetName(const char* name);
@@ -62,12 +63,14 @@ private:
 private:
 	bool enabled;
 	bool _visible;
-	std::string name;
 	GameObject* _parent;
 	Transform* transform;
 	std::vector<Component*> components;
-	std::vector<GameObject*> children;
 
 	OBB _OBB;
 	AABB _AABB;
+
+public:
+	std::string name;
+	std::vector<GameObject*> children;
 };

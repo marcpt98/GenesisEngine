@@ -118,9 +118,9 @@ update_status ModuleCamera3D::Update(float dt)
 
 	// Zoom 
 	if (App->input->GetMouseZ() > 0)
-		newPos += _camera->GetFrustum().front * zoom_speed * dt;
+		newPos += _camera->GetFrustum().front * zoom_speed * dt * 10;
 	else if(App->input->GetMouseZ() < 0 )
-		newPos -= _camera->GetFrustum().front * zoom_speed * dt;
+		newPos -= _camera->GetFrustum().front * zoom_speed * dt * 10;
 
 	if ((App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)||
 		((App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT) && (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_REPEAT)))

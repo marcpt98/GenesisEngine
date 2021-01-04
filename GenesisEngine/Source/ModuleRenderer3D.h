@@ -45,6 +45,7 @@ public:
 	void SetVSYNC(bool enabled);
 
 	void DrawRay();
+	void DrawCustomRay(float3 start, float3 end);
 
 private:
 	void GenerateBuffers();

@@ -385,6 +385,16 @@ void ModuleRenderer3D::DrawRay()
 	glEnd();
 }
 
+void ModuleRenderer3D::DrawCustomRay(float3 start, float3 end)
+{
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex3f(start.x, start.y, start.z);
+	glVertex3f(end.x, end.y, end.z);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glEnd();
+}
+
 void ModuleRenderer3D::GenerateBuffers()
 {
 	//FrameBuffer
