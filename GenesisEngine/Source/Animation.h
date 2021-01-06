@@ -3,11 +3,13 @@
 #include "Component.h"
 #include "MathGeoLib/include/MathGeoLib.h"
 #include "Mesh.h"
+#include "Time.h"
 
 #include <vector>;
 #include <map>
 
 class ResourceAnimation;
+class ResourceAnimationManager;
 class GameObject;
 class Channel;
 class GnMesh;
@@ -28,6 +30,8 @@ public:
 	virtual void OnEditor() override;
 
 	void InitAnimation();
+	void AddAnimations();
+	void PlayAnimation();
 
 public:
 	ResourceAnimation* _resource;
@@ -37,6 +41,13 @@ public:
 
 	GameObject* rootChannel;
 	std::map<std::string, GameObject*> anim_channels;
+
+	std::vector<ResourceAnimation*> animations;
+
+	ResourceAnimation* currentanimation;
+
+	uint anim_time;
+	float time;
 
 	bool init;
 };

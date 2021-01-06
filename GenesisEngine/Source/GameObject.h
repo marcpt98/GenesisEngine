@@ -33,7 +33,6 @@ public:
 	Component* AddComponent(ComponentType type);
 	void AddComponent(Component* component);
 	bool RemoveComponent(Component* component);
-	void SetChannelHierarchy(std::vector<GameObject*>& channels);
 
 	const char* GetName();
 	void SetName(const char* name);

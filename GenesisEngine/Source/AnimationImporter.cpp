@@ -69,7 +69,7 @@ void AnimationImporter::Import(const aiAnimation* aianimation, ResourceAnimation
 			channel.chan_RotKeys[rotkey.mTime] = Quat(rotkey.mValue.x, rotkey.mValue.y, rotkey.mValue.z, rotkey.mValue.w);
 		}
 
-		animation->anim_Channels.push_back(channel);
+		animation->anim_Channels.emplace(channel.chan_Name, channel);
 	}
 
 	LOG("Animation %s imported in %d ms", animation->name.c_str(), timer.Read());
@@ -82,9 +82,9 @@ uint64 AnimationImporter::Save(ResourceAnimation* animation, char** fileBuffer)
 	// Save animation
 	size = sizeof(float) + sizeof(float) + sizeof(uint);
 
-	for (int i = 0; i < animation->anim_Channels.size(); i++)
+	for (std::map<std::string, Channel>::iterator it = animation->anim_Channels.begin(); it != animation->anim_Channels.end(); it++)
 	{
-		Channel channel = animation->anim_Channels[i];
+		Channel channel = it->second;
 
 		// Name
 		size += sizeof(uint) + channel.chan_Name.size() + sizeof(uint) * 3;
@@ -109,9 +109,9 @@ uint64 AnimationImporter::Save(ResourceAnimation* animation, char** fileBuffer)
 	memcpy(cursor, &chan_size, sizeof(uint));
 	cursor += sizeof(uint);
 
-	for (int i = 0; i < animation->anim_Channels.size(); i++)
+	for (std::map<std::string, Channel>::iterator it = animation->anim_Channels.begin(); it != animation->anim_Channels.end(); it++)
 	{
-		Channel channel = animation->anim_Channels[i];
+		Channel channel = it->second;
 
 		SaveChannel(channel, &cursor);
 	}
@@ -190,6 +190,8 @@ bool AnimationImporter::Load(char* fileBuffer, ResourceAnimation* animation, uin
 
 		LoadChannel(channel, &cursor);
 
+		animation->anim_Channels.emplace(channel.chan_Name, channel);
+
 		animation->anim_NumChannels++;
 	}
 	LOG("ANIMATION LOADED");
@@ -229,6 +231,7 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 		*cursor += sizeof(float) * 3;
 
 		channel.chan_PosKeys[time] = float3(data);
+		channel.chan_NumPosKeys++;
 	}
 
 	for (int i = 0; i < ranges[1]; i++)
@@ -241,6 +244,7 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 		*cursor += sizeof(float) * 3;
 
 		channel.chan_ScaleKeys[time] = float3(data);
+		channel.chan_NumScaleKeys++;
 	}
 
 	for (int i = 0; i < ranges[2]; i++)
@@ -253,6 +257,7 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 		*cursor += sizeof(float) * 4;
 
 		channel.chan_RotKeys[time] = Quat(data);
+		channel.chan_NumRotKeys++;
 	}
 }
 

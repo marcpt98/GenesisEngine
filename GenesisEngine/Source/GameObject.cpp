@@ -371,16 +371,6 @@ void GameObject::UpdateChildrenTransforms()
 	}
 }
 
-void GameObject::SetChannelHierarchy(std::vector<GameObject*>& channels)
-{
-	channels.push_back(this);
-
-	for (uint i = 0; i < children.size(); i++)
-	{
-		children[i]->SetChannelHierarchy(channels);
-	}
-}
-
 void GameObject::GenerateAABB(GnMesh* mesh)
 {
 	if (mesh->GetResource(ResourceType::RESOURCE_MESH) == nullptr)

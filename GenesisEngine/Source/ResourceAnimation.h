@@ -43,5 +43,5 @@ public:
 
 	// Channels list
 	uint anim_NumChannels;
-	std::vector<Channel> anim_Channels;
+	std::map<std::string, Channel> anim_Channels;
 };

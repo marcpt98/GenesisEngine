@@ -7,6 +7,7 @@
 #include "GnJSON.h"
 
 #include "ResourceAnimation.h"
+#include "ResourceAnimationManager.h"
 
 #include "glew/include/glew.h"
 #include "ImGui/imgui.h"
@@ -20,7 +21,10 @@ Animation::Animation() : Component(), name("No name"), _resource(nullptr)
 	name = nullptr;
 	path = nullptr;
 	rootChannel = nullptr;
+	currentanimation = nullptr;
 	init = false;
+	anim_time = 0;
+	time = 0;
 }
 
 Animation::~Animation()
@@ -39,14 +43,18 @@ void Animation::InitAnimation()
 	// Get root gameobject with all channels
 	rootChannel = _gameObject->children[1]->children[0];
 
+	// Order gameobjects
 	std::vector<GameObject*> channels;
+	App->scene->PreorderGameObjects(rootChannel, channels);
 
-	rootChannel->SetChannelHierarchy(channels);
-
-	for (uint i = 0; i < channels.size(); ++i)
+	// Pass them to map
+	for (int i = 0; i < channels.size(); ++i)
 	{
 		anim_channels[channels[i]->name] = channels[i];
 	}
+
+	// Splice (not yet) and add animations
+	AddAnimations();
 }
 
 void Animation::Update()
@@ -56,8 +64,60 @@ void Animation::Update()
 		InitAnimation();
 		init = true;
 	}
+
+	// Animation time
+	time += App->GetLastDt();
+	anim_time = currentanimation->anim_TicksPerSecond * time;
+
+	// Loop
+	if (anim_time > currentanimation->anim_Duration)
+	{
+		time = 0;
+	}
+
+	PlayAnimation();
 	
 	Render();
+}
+
+void Animation::PlayAnimation()
+{
+	for (std::map<std::string, GameObject*>::iterator it = anim_channels.begin(); it != anim_channels.end(); it++)
+	{
+		// Get channel related with gameobject on list
+		Channel channel = currentanimation->anim_Channels.find(it->first)->second;
+
+		// Update Transforms
+		Transform* transform = (Transform*)it->second->GetComponent(ComponentType::TRANSFORM);
+
+		std::map<double, float3>::const_iterator pos_prev = channel.chan_PosKeys.lower_bound(anim_time);
+		if (pos_prev != channel.chan_PosKeys.end())
+		{
+			transform->SetPosition(pos_prev->second);
+		}
+
+		std::map<double, Quat>::const_iterator rot_prev = channel.chan_RotKeys.lower_bound(anim_time);
+		if (rot_prev != channel.chan_RotKeys.end())
+		{
+			transform->SetRotation(rot_prev->second);
+		}
+
+		std::map<double, float3>::const_iterator scl_prev = channel.chan_ScaleKeys.lower_bound(anim_time);
+		if (scl_prev != channel.chan_ScaleKeys.end())
+		{
+			transform->SetScale(scl_prev->second);
+		}
+
+		// Update matrix
+		float4x4 Transform = transform->GetGlobalTransform().Transposed();
+		float tempTransform[16];
+		memcpy(tempTransform, Transform.ptr(), 16 * sizeof(float));
+
+		float4x4 newTransform;
+		newTransform.Set(tempTransform);
+		Transform = newTransform.Transposed();
+		transform->SetGlobalTransform(Transform);
+	}
 }
 
 void Animation::Render()
@@ -88,6 +148,15 @@ void Animation::Render()
 			App->renderer3D->DrawCustomRay(startpos, endpos);
 		}
 	}
+}
+
+void Animation::AddAnimations()
+{
+	ResourceAnimationManager* animationlist = (ResourceAnimationManager*)App->resources->CreateResource(App->resources->GenerateUID(), ResourceType::RESOURCE_ANIMATION_MANAGER);
+
+	animationlist->AddAnimation(_resource->GetUID());
+
+	currentanimation = _resource;
 }
 
 void Animation::Save(GnJSONArray& save_array)
@@ -146,6 +215,7 @@ void Animation::OnEditor()
 
 			ImGui::Text("Channels: %d Duration: %f", _resource->anim_NumChannels, _resource->anim_Duration);
 			ImGui::Text("Ticks: %f", _resource->anim_TicksPerSecond);
+			ImGui::Text("Current animation time: %d", anim_time);
 		}
 		else
 		{
