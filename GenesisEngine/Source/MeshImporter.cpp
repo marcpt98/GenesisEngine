@@ -101,21 +101,87 @@ void MeshImporter::Import(const aiMesh* aimesh, ResourceMesh* mesh)
 		}
 	}
 
+	// Import Bones
+	if (aimesh->HasBones())
+	{
+		mesh->boneTransforms.resize(aimesh->mNumBones);
+
+		mesh->boneID = aimesh->mNumVertices * 4;
+		mesh->boneWeight = aimesh->mNumVertices * 4;
+
+		mesh->boneIDs = new int[mesh->boneID];
+		for (int i = 0; i < mesh->boneID; i++)
+		{
+			mesh->boneIDs[i] = -1;
+		}
+
+		mesh->boneWeights = new float[mesh->boneWeight];
+		for (int i = 0; i < mesh->boneWeight; i++)
+		{
+			mesh->boneWeights[i] = .0f;
+		}
+
+		for (int i = 0; i < aimesh->mNumBones; i++)
+		{
+			aiBone* bone = aimesh->mBones[i];
+			mesh->boneMapping[bone->mName.C_Str()] = i;
+
+			float4x4 offset = float4x4(bone->mOffsetMatrix.a1, bone->mOffsetMatrix.a2, bone->mOffsetMatrix.a3, bone->mOffsetMatrix.a4,
+				bone->mOffsetMatrix.b1, bone->mOffsetMatrix.b2, bone->mOffsetMatrix.b3, bone->mOffsetMatrix.b4,
+				bone->mOffsetMatrix.c1, bone->mOffsetMatrix.c2, bone->mOffsetMatrix.c3, bone->mOffsetMatrix.c4,
+				bone->mOffsetMatrix.d1, bone->mOffsetMatrix.d2, bone->mOffsetMatrix.d3, bone->mOffsetMatrix.d4);
+
+			mesh->boneOffsets.push_back(offset);
+
+			for (int j = 0; j < bone->mNumWeights; j++)
+			{
+				int vertexID = bone->mWeights[j].mVertexId;
+
+				for (int k = 0; k < 4; k++)
+				{
+					if (mesh->boneIDs[vertexID * 4 + k] == -1)
+					{
+						mesh->boneIDs[vertexID * 4 + k] = i;
+						mesh->boneWeights[vertexID * 4 + k] = bone->mWeights[j].mWeight;
+						break;
+					}
+				}
+			}
+		}
+	}
+
 	LOG("Mesh imported in %d ms", timer.Read());
 }
 
 uint64 MeshImporter::Save(ResourceMesh* mesh, char** fileBuffer)
 {
-	uint ranges[4] = { mesh->indices_amount, mesh->vertices_amount, mesh->normals_amount, mesh->texcoords_amount };
+	uint ranges[6] = { mesh->indices_amount, mesh->vertices_amount, mesh->normals_amount, mesh->texcoords_amount, 
+		mesh->boneID, mesh->boneWeight };
 
-	uint size = sizeof(ranges) + sizeof(uint) * mesh->indices_amount + sizeof(float) * mesh->vertices_amount * 3
-		+ sizeof(float) * mesh->normals_amount * 3 + sizeof(float) * mesh->texcoords_amount * 2;
+	uint size = sizeof(ranges) + sizeof(uint) 
+		+ sizeof(uint) * mesh->indices_amount + (sizeof(float) * mesh->vertices_amount * 3)
+		+ sizeof(float) * mesh->normals_amount * 3 + (sizeof(float) * mesh->texcoords_amount * 2)
+		+ sizeof(int) * mesh->boneID + sizeof(float) * mesh->boneWeight 
+		+ sizeof(float) * 16 * mesh->boneOffsets.size() + sizeof(char) * 30 * mesh->boneMapping.size();
 
-	char* buffer = new char[size];
-	char* cursor = buffer;
+	for (std::map<std::string, uint>::const_iterator it = mesh->boneMapping.begin(); it != mesh->boneMapping.end(); ++it)
+	{
+		size += sizeof(uint);
+		size += sizeof(char) * it->first.size();
+	}
 
+	*fileBuffer = new char[size];
+	char* cursor = *fileBuffer;
+
+	//store ranges
 	uint bytes = sizeof(ranges);
 	memcpy(cursor, ranges, bytes);
+	cursor += bytes;
+
+	//store bone offsets
+	bytes = sizeof(uint);
+	uint bonesSize = mesh->boneOffsets.size();
+	memcpy(cursor, &bonesSize, bytes);
 	cursor += bytes;
 
 	//store indices
@@ -132,12 +198,57 @@ uint64 MeshImporter::Save(ResourceMesh* mesh, char** fileBuffer)
 	bytes = sizeof(float) * mesh->normals_amount * 3;
 	memcpy(cursor, mesh->normals, bytes);
 	cursor += bytes;
+	
 
 	//store texcoords
 	bytes = sizeof(float) * mesh->texcoords_amount * 2;
 	memcpy(cursor, mesh->texcoords, bytes);
+	cursor += bytes;
+	
+	// Save Bones
+	uint _bytes = 0;
 
-	*fileBuffer = buffer;
+	if (mesh->boneID > 0)
+	{
+		_bytes = sizeof(int) * mesh->boneID;
+		memcpy(cursor, mesh->boneIDs, _bytes);
+		cursor += _bytes;
+	}
+
+	if (mesh->boneWeight > 0)
+	{
+		_bytes = sizeof(float) * mesh->boneWeight;
+		memcpy(cursor, mesh->boneWeights, _bytes);
+		cursor += _bytes;
+	}
+
+	if (mesh->boneOffsets.size() > 0)
+	{
+		for (int i = 0; i < mesh->boneOffsets.size(); ++i)
+		{
+			_bytes = sizeof(float) * 16;
+			memcpy(cursor, mesh->boneOffsets[i].ptr(), _bytes);
+			cursor += _bytes;
+		}
+	}
+
+	for (int i = 0; i < mesh->boneMapping.size(); i++)
+	{
+		for (std::map<std::string, uint>::const_iterator it = mesh->boneMapping.begin(); it != mesh->boneMapping.end(); it++)
+		{
+			if (it->second == i)
+			{
+				_bytes = sizeof(uint);
+				uint string_size = it->first.size();
+				memcpy(cursor, &string_size, _bytes);
+				cursor += _bytes;
+
+				_bytes = sizeof(char) * string_size;
+				memcpy(cursor, it->first.c_str(), _bytes);
+				cursor += _bytes;
+			}
+		}
+	}
 
 	return size;
 }
@@ -151,15 +262,26 @@ bool MeshImporter::Load(char* fileBuffer, ResourceMesh* mesh, uint size)
 
 	char* cursor = fileBuffer;
 
-	uint ranges[4];
+	uint ranges[6];
 	uint bytes = sizeof(ranges);
 	memcpy(ranges, cursor, bytes);
 	cursor += bytes;
+
+	// Bones
+	bytes = sizeof(uint);
+	uint bonesSize = 0;
+	memcpy(&bonesSize, cursor, bytes);
+	cursor += bytes;
+
+	mesh->boneTransforms.resize(bonesSize);
+	mesh->boneOffsets.resize(bonesSize);
 
 	mesh->indices_amount = ranges[0];
 	mesh->vertices_amount = ranges[1];
 	mesh->normals_amount = ranges[2];
 	mesh->texcoords_amount = ranges[3];
+	mesh->boneID = ranges[4];
+	mesh->boneWeight = ranges[5];
 
 	// Load indices
 	bytes = sizeof(uint) * mesh->indices_amount;
@@ -185,9 +307,57 @@ bool MeshImporter::Load(char* fileBuffer, ResourceMesh* mesh, uint size)
 	memcpy(mesh->texcoords, cursor, bytes);
 	cursor += bytes;
 
-	LOG("%s loaded in %d ms", mesh->libraryFile.c_str(), timer.Read());
+	//load bones
+	uint _bytes = 0;
+
+	if (mesh->boneID > 0)
+	{
+		_bytes = sizeof(int) * mesh->boneID;
+		mesh->boneIDs = new int[mesh->boneID];
+		memcpy(mesh->boneIDs, cursor, _bytes);
+		cursor += _bytes;
+	}
+
+	if (mesh->boneWeight > 0)
+	{
+		_bytes = sizeof(float) * mesh->boneWeight;
+		mesh->boneWeights = new float[mesh->boneWeight];
+		memcpy(mesh->boneWeights, cursor, _bytes);
+		cursor += _bytes;
+	}
+
+	float matrix[16];
+	for (uint i = 0; i < mesh->boneOffsets.size(); ++i)
+	{
+		_bytes = sizeof(float) * 16;
+		memcpy(matrix, cursor, _bytes);
+		cursor += _bytes;
+
+		float4x4 offset;
+		offset.Set(matrix);
+		mesh->boneOffsets[i] = offset;
+	}
+
+	char name[30];
+	for (uint i = 0; i < mesh->boneTransforms.size(); ++i)
+	{
+		_bytes = sizeof(uint);
+		uint stringSize = 0;
+		memcpy(&stringSize, cursor, _bytes);
+		cursor += _bytes;
+
+		_bytes = sizeof(char) * stringSize;
+		memcpy(name, cursor, _bytes);
+		cursor += _bytes;
+
+		name[stringSize] = '\0';
+		std::string str(name);
+		mesh->boneMapping[str.c_str()] = i;
+	}
 
 	mesh->GenerateBuffers();
+
+	LOG("%s loaded in %d ms", mesh->libraryFile.c_str(), timer.Read());
 
 	return ret;
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include "Resource.h"
+#include "MathGeoLib/include/MathGeoLib.h"
+
+#include <map>
 
 class GnJSONObj;
 
@@ -31,7 +34,23 @@ public:
 	uint texcoords_amount = 0;
 	float* texcoords = nullptr;
 
-	float* colors = nullptr;;
+	float* colors = nullptr;
+
+	// Bones
+	// Buffer of 4 * nº vertices. 4 bones for each vertex
+	int* boneIDs = nullptr;
+	int boneID = 0;
+
+	// Influences that each bone has over each vertex
+	float* boneWeights = nullptr;
+	float boneWeight = 0;
+
+	// A way to relate bone names (Game Object names) with array positions
+	std::map<std::string, uint> boneMapping;
+
+	// Transformation from bind pose to bone space
+	std::vector<float4x4> boneOffsets;
+	std::vector<float4x4> boneTransforms;
 
 private:
 	bool _buffers_created;
