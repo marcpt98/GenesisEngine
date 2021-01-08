@@ -1,7 +1,7 @@
 {
     "Game Objects": [
         {
-            "UUID": 1242873880,
+            "UUID": 1737948373,
             "Parent UUID": 0,
             "Name": "Root",
             "Components": [
@@ -27,8 +27,8 @@
             ]
         },
         {
-            "UUID": 463892323,
-            "Parent UUID": 1242873880,
+            "UUID": 1787282345,
+            "Parent UUID": 1737948373,
             "Name": "anitest",
             "Components": [
                 {
@@ -52,13 +52,13 @@
                 },
                 {
                     "Type": 2,
-                    "AnimationID": 1579996032
+                    "AnimationID": 1702488137
                 }
             ]
         },
         {
-            "UUID": 472246843,
-            "Parent UUID": 463892323,
+            "UUID": 1788326660,
+            "Parent UUID": 1787282345,
             "Name": "Object02",
             "Components": [
                 {
@@ -82,18 +82,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1549653786
+                    "MeshID": 1699581898
                 },
                 {
                     "Type": 3,
-                    "Material UID": 2078349405,
-                    "Texture UID": 1901618249
+                    "Material UID": 2047430231,
+                    "Texture UID": 421786287
                 }
             ]
         },
         {
-            "UUID": 480044395,
-            "Parent UUID": 463892323,
+            "UUID": 1789162112,
+            "Parent UUID": 1787282345,
             "Name": "transform1",
             "Components": [
                 {
@@ -118,8 +118,8 @@
             ]
         },
         {
-            "UUID": 487076116,
-            "Parent UUID": 480044395,
+            "UUID": 1789858322,
+            "Parent UUID": 1789162112,
             "Name": "Bip001 Pelvis",
             "Components": [
                 {
@@ -144,8 +144,8 @@
             ]
         },
         {
-            "UUID": 494455942,
-            "Parent UUID": 487076116,
+            "UUID": 1790484911,
+            "Parent UUID": 1789858322,
             "Name": "Bip001 Spine",
             "Components": [
                 {
@@ -170,8 +170,8 @@
             ]
         },
         {
-            "UUID": 502880083,
-            "Parent UUID": 494455942,
+            "UUID": 1792434299,
+            "Parent UUID": 1790484911,
             "Name": "Bip001 Spine1",
             "Components": [
                 {
@@ -196,8 +196,8 @@
             ]
         },
         {
-            "UUID": 505734544,
-            "Parent UUID": 502880083,
+            "UUID": 1792782404,
+            "Parent UUID": 1792434299,
             "Name": "Bip001 Neck",
             "Components": [
                 {
@@ -222,8 +222,8 @@
             ]
         },
         {
-            "UUID": 516804283,
-            "Parent UUID": 505734544,
+            "UUID": 1794314066,
+            "Parent UUID": 1792782404,
             "Name": "Bip001 L Clavicle",
             "Components": [
                 {
@@ -248,8 +248,8 @@
             ]
         },
         {
-            "UUID": 520772680,
-            "Parent UUID": 516804283,
+            "UUID": 1794731792,
+            "Parent UUID": 1794314066,
             "Name": "Bip001 L UpperArm",
             "Components": [
                 {
@@ -274,8 +274,8 @@
             ]
         },
         {
-            "UUID": 524323351,
-            "Parent UUID": 520772680,
+            "UUID": 1795149518,
+            "Parent UUID": 1794731792,
             "Name": "Bip001 L Forearm",
             "Components": [
                 {
@@ -300,8 +300,8 @@
             ]
         },
         {
-            "UUID": 538247551,
-            "Parent UUID": 524323351,
+            "UUID": 1796959664,
+            "Parent UUID": 1795149518,
             "Name": "Bip001 L Hand",
             "Components": [
                 {
@@ -326,8 +326,8 @@
             ]
         },
         {
-            "UUID": 541589359,
-            "Parent UUID": 538247551,
+            "UUID": 1797516632,
+            "Parent UUID": 1796959664,
             "Name": "Bip001 L Finger0",
             "Components": [
                 {
@@ -352,8 +352,8 @@
             ]
         },
         {
-            "UUID": 545140030,
-            "Parent UUID": 541589359,
+            "UUID": 1797934358,
+            "Parent UUID": 1797516632,
             "Name": "Bip001 L Finger01",
             "Components": [
                 {
@@ -378,8 +378,8 @@
             ]
         },
         {
-            "UUID": 548829943,
-            "Parent UUID": 545140030,
+            "UUID": 1798352084,
+            "Parent UUID": 1797934358,
             "Name": "Bip001 L Finger02",
             "Components": [
                 {
@@ -404,8 +404,8 @@
             ]
         },
         {
-            "UUID": 568950412,
-            "Parent UUID": 538247551,
+            "UUID": 1799674883,
+            "Parent UUID": 1796959664,
             "Name": "Bip001 L Finger1",
             "Components": [
                 {
@@ -430,8 +430,8 @@
             ]
         },
         {
-            "UUID": 572570704,
-            "Parent UUID": 568950412,
+            "UUID": 1800022988,
+            "Parent UUID": 1799674883,
             "Name": "Bip001 L Finger11",
             "Components": [
                 {
@@ -456,8 +456,8 @@
             ]
         },
         {
-            "UUID": 576190996,
-            "Parent UUID": 572570704,
+            "UUID": 1800440714,
+            "Parent UUID": 1800022988,
             "Name": "Bip001 L Finger12",
             "Components": [
                 {
@@ -482,8 +482,8 @@
             ]
         },
         {
-            "UUID": 582944233,
-            "Parent UUID": 505734544,
+            "UUID": 1800997682,
+            "Parent UUID": 1792782404,
             "Name": "Bip001 R Clavicle",
             "Components": [
                 {
@@ -508,8 +508,8 @@
             ]
         },
         {
-            "UUID": 586355662,
-            "Parent UUID": 582944233,
+            "UUID": 1801415408,
+            "Parent UUID": 1800997682,
             "Name": "Bip001 R UpperArm",
             "Components": [
                 {
@@ -534,8 +534,8 @@
             ]
         },
         {
-            "UUID": 589836712,
-            "Parent UUID": 586355662,
+            "UUID": 1801693892,
+            "Parent UUID": 1801415408,
             "Name": "Bip001 R Forearm",
             "Components": [
                 {
@@ -560,8 +560,8 @@
             ]
         },
         {
-            "UUID": 613716715,
-            "Parent UUID": 589836712,
+            "UUID": 1803225554,
+            "Parent UUID": 1801693892,
             "Name": "Bip001 R Hand",
             "Components": [
                 {
@@ -586,8 +586,8 @@
             ]
         },
         {
-            "UUID": 616849660,
-            "Parent UUID": 613716715,
+            "UUID": 1803643280,
+            "Parent UUID": 1803225554,
             "Name": "Bip001 R Finger0",
             "Components": [
                 {
@@ -612,8 +612,8 @@
             ]
         },
         {
-            "UUID": 620330710,
-            "Parent UUID": 616849660,
+            "UUID": 1803921764,
+            "Parent UUID": 1803643280,
             "Name": "Bip001 R Finger01",
             "Components": [
                 {
@@ -638,8 +638,8 @@
             ]
         },
         {
-            "UUID": 623881381,
-            "Parent UUID": 620330710,
+            "UUID": 1804339490,
+            "Parent UUID": 1803921764,
             "Name": "Bip001 R Finger02",
             "Components": [
                 {
@@ -664,8 +664,8 @@
             ]
         },
         {
-            "UUID": 629102956,
-            "Parent UUID": 613716715,
+            "UUID": 1804687595,
+            "Parent UUID": 1803225554,
             "Name": "Bip001 R Finger1",
             "Components": [
                 {
@@ -690,8 +690,8 @@
             ]
         },
         {
-            "UUID": 632653627,
-            "Parent UUID": 629102956,
+            "UUID": 1805035700,
+            "Parent UUID": 1804687595,
             "Name": "Bip001 R Finger11",
             "Components": [
                 {
@@ -716,8 +716,8 @@
             ]
         },
         {
-            "UUID": 636343540,
-            "Parent UUID": 632653627,
+            "UUID": 1805383805,
+            "Parent UUID": 1805035700,
             "Name": "Bip001 R Finger12",
             "Components": [
                 {
@@ -742,8 +742,8 @@
             ]
         },
         {
-            "UUID": 642887914,
-            "Parent UUID": 505734544,
+            "UUID": 1805871152,
+            "Parent UUID": 1792782404,
             "Name": "Bip001 Head",
             "Components": [
                 {
@@ -768,8 +768,8 @@
             ]
         },
         {
-            "UUID": 645463891,
-            "Parent UUID": 642887914,
+            "UUID": 1806288878,
+            "Parent UUID": 1805871152,
             "Name": "Bone001",
             "Components": [
                 {
@@ -794,8 +794,8 @@
             ]
         },
         {
-            "UUID": 683198473,
-            "Parent UUID": 494455942,
+            "UUID": 1807890161,
+            "Parent UUID": 1790484911,
             "Name": "Bip001 L Thigh",
             "Components": [
                 {
@@ -820,8 +820,8 @@
             ]
         },
         {
-            "UUID": 685913692,
-            "Parent UUID": 683198473,
+            "UUID": 1808307887,
+            "Parent UUID": 1807890161,
             "Name": "Bip001 L Calf",
             "Components": [
                 {
@@ -846,8 +846,8 @@
             ]
         },
         {
-            "UUID": 689603605,
-            "Parent UUID": 685913692,
+            "UUID": 1808586371,
+            "Parent UUID": 1808307887,
             "Name": "Bip001 L Foot",
             "Components": [
                 {
@@ -872,8 +872,8 @@
             ]
         },
         {
-            "UUID": 694546696,
-            "Parent UUID": 689603605,
+            "UUID": 1809004097,
+            "Parent UUID": 1808586371,
             "Name": "Bip001 L Toe0",
             "Components": [
                 {
@@ -898,8 +898,8 @@
             ]
         },
         {
-            "UUID": 702692353,
-            "Parent UUID": 494455942,
+            "UUID": 1809212960,
+            "Parent UUID": 1790484911,
             "Name": "Bip001 R Thigh",
             "Components": [
                 {
@@ -924,8 +924,8 @@
             ]
         },
         {
-            "UUID": 706660750,
-            "Parent UUID": 702692353,
+            "UUID": 1809491444,
+            "Parent UUID": 1809212960,
             "Name": "Bip001 R Calf",
             "Components": [
                 {
@@ -950,8 +950,8 @@
             ]
         },
         {
-            "UUID": 710141800,
-            "Parent UUID": 706660750,
+            "UUID": 1809700307,
+            "Parent UUID": 1809491444,
             "Name": "Bip001 R Foot",
             "Components": [
                 {
@@ -976,8 +976,8 @@
             ]
         },
         {
-            "UUID": 713483608,
-            "Parent UUID": 710141800,
+            "UUID": 1809839549,
+            "Parent UUID": 1809700307,
             "Name": "Bip001 R Toe0",
             "Components": [
                 {
@@ -1002,8 +1002,8 @@
             ]
         },
         {
-            "UUID": 1336268232,
-            "Parent UUID": 1242873880,
+            "UUID": 47194732,
+            "Parent UUID": 1737948373,
             "Name": "street environment_v01",
             "Components": [
                 {
@@ -1028,8 +1028,8 @@
             ]
         },
         {
-            "UUID": 1351932957,
-            "Parent UUID": 1336268232,
+            "UUID": 49909951,
+            "Parent UUID": 47194732,
             "Name": "Sky001",
             "Components": [
                 {
@@ -1073,8 +1073,8 @@
             ]
         },
         {
-            "UUID": 1365300189,
-            "Parent UUID": 1336268232,
+            "UUID": 51232750,
+            "Parent UUID": 47194732,
             "Name": "Dummy001",
             "Components": [
                 {
@@ -1099,8 +1099,8 @@
             ]
         },
         {
-            "UUID": 1373236983,
-            "Parent UUID": 1365300189,
+            "UUID": 52485928,
+            "Parent UUID": 51232750,
             "Name": "City_building_004",
             "Components": [
                 {
@@ -1124,18 +1124,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 150816809
+                    "MeshID": 1225246501
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1617043107,
-                    "Texture UID": 621787010
+                    "Material UID": 122886201,
+                    "Texture UID": 896097027
                 }
             ]
         },
         {
-            "UUID": 1383401649,
-            "Parent UUID": 1365300189,
+            "UUID": 54226453,
+            "Parent UUID": 51232750,
             "Name": "City_building_001",
             "Components": [
                 {
@@ -1159,18 +1159,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 535425030
+                    "MeshID": 1359358364
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1859632677,
-                    "Texture UID": 1179099398
+                    "Material UID": 1838997981,
+                    "Texture UID": 351737952
                 }
             ]
         },
         {
-            "UUID": 1405958853,
-            "Parent UUID": 1365300189,
+            "UUID": 55340389,
+            "Parent UUID": 51232750,
             "Name": "City_building_007",
             "Components": [
                 {
@@ -1194,18 +1194,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1925012386
+                    "MeshID": 927173013
                 },
                 {
                     "Type": 3,
-                    "Material UID": 2126020270,
-                    "Texture UID": 1165783536
+                    "Material UID": 663188644,
+                    "Texture UID": 1420595503
                 }
             ]
         },
         {
-            "UUID": 1410275355,
-            "Parent UUID": 1365300189,
+            "UUID": 55758115,
+            "Parent UUID": 51232750,
             "Name": "City_building_008",
             "Components": [
                 {
@@ -1229,18 +1229,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1419235553
+                    "MeshID": 1391869286
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1838773331,
-                    "Texture UID": 945094273
+                    "Material UID": 770090088,
+                    "Texture UID": 1699251954
                 }
             ]
         },
         {
-            "UUID": 1421484336,
-            "Parent UUID": 1365300189,
+            "UUID": 57150535,
+            "Parent UUID": 51232750,
             "Name": "Line002",
             "Components": [
                 {
@@ -1264,17 +1264,17 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 831080397
+                    "MeshID": 228309075
                 },
                 {
                     "Type": 3,
-                    "Material UID": 437797170
+                    "Material UID": 1379128341
                 }
             ]
         },
         {
-            "UUID": 1424338797,
-            "Parent UUID": 1365300189,
+            "UUID": 57429019,
+            "Parent UUID": 51232750,
             "Name": "Plane001",
             "Components": [
                 {
@@ -1298,17 +1298,17 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 815831313
+                    "MeshID": 992351746
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1338851884
+                    "Material UID": 2135536604
                 }
             ]
         },
         {
-            "UUID": 1427889468,
-            "Parent UUID": 1365300189,
+            "UUID": 57846745,
+            "Parent UUID": 51232750,
             "Name": "City_building_010",
             "Components": [
                 {
@@ -1332,18 +1332,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1442439078
+                    "MeshID": 1589081677
                 },
                 {
                     "Type": 3,
-                    "Material UID": 47587027,
-                    "Texture UID": 1322626021
+                    "Material UID": 1420202646,
+                    "Texture UID": 150918293
                 }
             ]
         },
         {
-            "UUID": 1451769471,
-            "Parent UUID": 1365300189,
+            "UUID": 58960681,
+            "Parent UUID": 51232750,
             "Name": "City_building_011",
             "Components": [
                 {
@@ -1367,18 +1367,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1925012386
+                    "MeshID": 927173013
                 },
                 {
                     "Type": 3,
-                    "Material UID": 2126020270,
-                    "Texture UID": 1165783536
+                    "Material UID": 663188644,
+                    "Texture UID": 1420595503
                 }
             ]
         },
         {
-            "UUID": 1455946731,
-            "Parent UUID": 1365300189,
+            "UUID": 59308786,
+            "Parent UUID": 51232750,
             "Name": "City_building_013",
             "Components": [
                 {
@@ -1402,18 +1402,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1235147204
+                    "MeshID": 1743916696
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1539203324,
-                    "Texture UID": 742367077
+                    "Material UID": 652961428,
+                    "Texture UID": 1437729340
                 }
             ]
         },
         {
-            "UUID": 1472795013,
-            "Parent UUID": 1365300189,
+            "UUID": 59865754,
+            "Parent UUID": 51232750,
             "Name": "City_building_014",
             "Components": [
                 {
@@ -1437,18 +1437,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1767430873
+                    "MeshID": 308625722
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1617043107,
-                    "Texture UID": 621787010
+                    "Material UID": 122886201,
+                    "Texture UID": 896097027
                 }
             ]
         },
         {
-            "UUID": 1477111515,
-            "Parent UUID": 1365300189,
+            "UUID": 60213859,
+            "Parent UUID": 51232750,
             "Name": "City_building_016",
             "Components": [
                 {
@@ -1472,18 +1472,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1442439078
+                    "MeshID": 1589081677
                 },
                 {
                     "Type": 3,
-                    "Material UID": 47587027,
-                    "Texture UID": 1322626021
+                    "Material UID": 1420202646,
+                    "Texture UID": 150918293
                 }
             ]
         },
         {
-            "UUID": 1497997815,
-            "Parent UUID": 1365300189,
+            "UUID": 61745521,
+            "Parent UUID": 51232750,
             "Name": "City_building_017",
             "Components": [
                 {
@@ -1507,18 +1507,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1442439078
+                    "MeshID": 1589081677
                 },
                 {
                     "Type": 3,
-                    "Material UID": 47587027,
-                    "Texture UID": 1322626021
+                    "Material UID": 1420202646,
+                    "Texture UID": 150918293
                 }
             ]
         },
         {
-            "UUID": 1502035833,
-            "Parent UUID": 1365300189,
+            "UUID": 62163247,
+            "Parent UUID": 51232750,
             "Name": "City_building_022",
             "Components": [
                 {
@@ -1542,18 +1542,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1189942325
+                    "MeshID": 190476800
                 },
                 {
                     "Type": 3,
-                    "Material UID": 71463676,
-                    "Texture UID": 1324293571
+                    "Material UID": 1541126799,
+                    "Texture UID": 158360216
                 }
             ]
         },
         {
-            "UUID": 1507744755,
-            "Parent UUID": 1365300189,
+            "UUID": 62580973,
+            "Parent UUID": 51232750,
             "Name": "City_building_023",
             "Components": [
                 {
@@ -1577,18 +1577,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1925012386
+                    "MeshID": 927173013
                 },
                 {
                     "Type": 3,
-                    "Material UID": 2126020270,
-                    "Texture UID": 1165783536
+                    "Material UID": 663188644,
+                    "Texture UID": 1420595503
                 }
             ]
         },
         {
-            "UUID": 1511922015,
-            "Parent UUID": 1365300189,
+            "UUID": 62929078,
+            "Parent UUID": 51232750,
             "Name": "City_building_024",
             "Components": [
                 {
@@ -1612,18 +1612,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1419235553
+                    "MeshID": 1391869286
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1838773331,
-                    "Texture UID": 945094273
+                    "Material UID": 770090088,
+                    "Texture UID": 1699251954
                 }
             ]
         },
         {
-            "UUID": 1524175311,
-            "Parent UUID": 1365300189,
+            "UUID": 63277183,
+            "Parent UUID": 51232750,
             "Name": "City_building_026",
             "Components": [
                 {
@@ -1647,18 +1647,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 349169939
+                    "MeshID": 1048623161
                 },
                 {
                     "Type": 3,
-                    "Material UID": 71463676,
-                    "Texture UID": 1324293571
+                    "Material UID": 1541126799,
+                    "Texture UID": 158360216
                 }
             ]
         },
         {
-            "UUID": 1529118402,
-            "Parent UUID": 1365300189,
+            "UUID": 63834151,
+            "Parent UUID": 51232750,
             "Name": "City_building_028",
             "Components": [
                 {
@@ -1682,18 +1682,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 727301473
+                    "MeshID": 712549117
                 },
                 {
                     "Type": 3,
-                    "Material UID": 767011642,
-                    "Texture UID": 118992941
+                    "Material UID": 278999781,
+                    "Texture UID": 899528490
                 }
             ]
         },
         {
-            "UUID": 1568315025,
-            "Parent UUID": 1365300189,
+            "UUID": 65365813,
+            "Parent UUID": 51232750,
             "Name": "Object010",
             "Components": [
                 {
@@ -1717,17 +1717,17 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1817102737
+                    "MeshID": 436513244
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1152494779
+                    "Material UID": 49202677
                 }
             ]
         },
         {
-            "UUID": 1574720157,
-            "Parent UUID": 1365300189,
+            "UUID": 65853160,
+            "Parent UUID": 51232750,
             "Name": "City_building_030",
             "Components": [
                 {
@@ -1751,18 +1751,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 727301473
+                    "MeshID": 712549117
                 },
                 {
                     "Type": 3,
-                    "Material UID": 767011642,
-                    "Texture UID": 118992941
+                    "Material UID": 278999781,
+                    "Texture UID": 899528490
                 }
             ]
         },
         {
-            "UUID": 1582865814,
-            "Parent UUID": 1365300189,
+            "UUID": 66270886,
+            "Parent UUID": 51232750,
             "Name": "City_building_031",
             "Components": [
                 {
@@ -1786,18 +1786,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 727301473
+                    "MeshID": 712549117
                 },
                 {
                     "Type": 3,
-                    "Material UID": 767011642,
-                    "Texture UID": 118992941
+                    "Material UID": 278999781,
+                    "Texture UID": 899528490
                 }
             ]
         },
         {
-            "UUID": 1597346982,
-            "Parent UUID": 1365300189,
+            "UUID": 66618991,
+            "Parent UUID": 51232750,
             "Name": "City_building_032",
             "Components": [
                 {
@@ -1821,18 +1821,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 150816809
+                    "MeshID": 1225246501
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1617043107,
-                    "Texture UID": 621787010
+                    "Material UID": 122886201,
+                    "Texture UID": 896097027
                 }
             ]
         },
         {
-            "UUID": 1605701502,
-            "Parent UUID": 1365300189,
+            "UUID": 67106338,
+            "Parent UUID": 51232750,
             "Name": "City_building_033",
             "Components": [
                 {
@@ -1856,18 +1856,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 82212868
+                    "MeshID": 1390784389
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1539203324,
-                    "Texture UID": 742367077
+                    "Material UID": 652961428,
+                    "Texture UID": 1437729340
                 }
             ]
         },
         {
-            "UUID": 1610366109,
-            "Parent UUID": 1365300189,
+            "UUID": 67524064,
+            "Parent UUID": 51232750,
             "Name": "City_building_034",
             "Components": [
                 {
@@ -1891,18 +1891,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1378136077
+                    "MeshID": 842516929
                 },
                 {
                     "Type": 3,
-                    "Material UID": 71463676,
-                    "Texture UID": 1324293571
+                    "Material UID": 1541126799,
+                    "Texture UID": 158360216
                 }
             ]
         },
         {
-            "UUID": 1614334506,
-            "Parent UUID": 1365300189,
+            "UUID": 67872169,
+            "Parent UUID": 51232750,
             "Name": "City_building_035",
             "Components": [
                 {
@@ -1926,18 +1926,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 727301473
+                    "MeshID": 712549117
                 },
                 {
                     "Type": 3,
-                    "Material UID": 767011642,
-                    "Texture UID": 118992941
+                    "Material UID": 278999781,
+                    "Texture UID": 899528490
                 }
             ]
         },
         {
-            "UUID": 1618302903,
-            "Parent UUID": 1365300189,
+            "UUID": 68289895,
+            "Parent UUID": 51232750,
             "Name": "City_building_036",
             "Components": [
                 {
@@ -1961,18 +1961,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1235147204
+                    "MeshID": 1743916696
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1539203324,
-                    "Texture UID": 742367077
+                    "Material UID": 652961428,
+                    "Texture UID": 1437729340
                 }
             ]
         },
         {
-            "UUID": 1622201679,
-            "Parent UUID": 1365300189,
+            "UUID": 68638000,
+            "Parent UUID": 51232750,
             "Name": "City_building_037",
             "Components": [
                 {
@@ -1996,18 +1996,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1395515340
+                    "MeshID": 1376810300
                 },
                 {
                     "Type": 3,
-                    "Material UID": 71463676,
-                    "Texture UID": 1324293571
+                    "Material UID": 1541126799,
+                    "Texture UID": 158360216
                 }
             ]
         },
         {
-            "UUID": 1660214745,
-            "Parent UUID": 1365300189,
+            "UUID": 70100041,
+            "Parent UUID": 51232750,
             "Name": "City_building_038",
             "Components": [
                 {
@@ -2031,18 +2031,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 1568730303
+                    "MeshID": 1107468468
                 },
                 {
                     "Type": 3,
-                    "Material UID": 71463676,
-                    "Texture UID": 1324293571
+                    "Material UID": 1541126799,
+                    "Texture UID": 158360216
                 }
             ]
         },
         {
-            "UUID": 1664461626,
-            "Parent UUID": 1365300189,
+            "UUID": 70517767,
+            "Parent UUID": 51232750,
             "Name": "City_building_039",
             "Components": [
                 {
@@ -2066,18 +2066,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 727301473
+                    "MeshID": 712549117
                 },
                 {
                     "Type": 3,
-                    "Material UID": 767011642,
-                    "Texture UID": 118992941
+                    "Material UID": 278999781,
+                    "Texture UID": 899528490
                 }
             ]
         },
         {
-            "UUID": 1668638886,
-            "Parent UUID": 1365300189,
+            "UUID": 70935493,
+            "Parent UUID": 51232750,
             "Name": "City_building_040",
             "Components": [
                 {
@@ -2101,18 +2101,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 727301473
+                    "MeshID": 712549117
                 },
                 {
                     "Type": 3,
-                    "Material UID": 767011642,
-                    "Texture UID": 118992941
+                    "Material UID": 278999781,
+                    "Texture UID": 899528490
                 }
             ]
         },
         {
-            "UUID": 1672885767,
-            "Parent UUID": 1365300189,
+            "UUID": 71213977,
+            "Parent UUID": 51232750,
             "Name": "City_building_041",
             "Components": [
                 {
@@ -2136,18 +2136,18 @@
                 },
                 {
                     "Type": 1,
-                    "MeshID": 535425030
+                    "MeshID": 1359358364
                 },
                 {
                     "Type": 3,
-                    "Material UID": 1859632677,
-                    "Texture UID": 1179099398
+                    "Material UID": 1838997981,
+                    "Texture UID": 351737952
                 }
             ]
         },
         {
-            "UUID": 1685487168,
-            "Parent UUID": 1336268232,
+            "UUID": 72467155,
+            "Parent UUID": 47194732,
             "Name": "Camera001",
             "Components": [
                 {
@@ -2202,8 +2202,8 @@
             ]
         },
         {
-            "UUID": 1728373704,
-            "Parent UUID": 1336268232,
+            "UUID": 76157068,
+            "Parent UUID": 47194732,
             "Name": "Spot001",
             "Components": [
                 {
@@ -2247,8 +2247,8 @@
             ]
         },
         {
-            "UUID": 846816389,
-            "Parent UUID": 1242873880,
+            "UUID": 1876989699,
+            "Parent UUID": 1737948373,
             "Name": "Main Camera",
             "Components": [
                 {
@@ -2275,8 +2275,8 @@
                     "Type": 4,
                     "Main Camera": true,
                     "position": [
-                        20,
-                        1,
+                        0,
+                        0,
                         -5
                     ],
                     "up": [
@@ -2295,9 +2295,9 @@
                     "farPlane": 1000,
                     "aspectRatio": 1.7777777910232544,
                     "reference": [
-                        -431602080,
-                        -431602080,
-                        -431602080
+                        5.0082612726035282e-33,
+                        5.0083817607744875e-33,
+                        -1.7232128381729126
                     ]
                 }
             ]

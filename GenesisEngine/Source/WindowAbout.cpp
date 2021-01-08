@@ -16,19 +16,23 @@ void WindowAbout::Draw()
 {
 	if (ImGui::Begin("About", &visible))
 	{
-		ImGui::Text("%s v%s", App->engine_name, App->engine_version);
-		ImGui::Text("The first chapter of your creation");
-		ImGui::Spacing();
+		ImGui::Text("Unfalse Engine v2.0");
 
-		ImGui::Text("Made by: ");
-		ImGui::SameLine();
-		if (ImGui::SmallButton("Marc Pages Francesch"))
-			ShellExecuteA(NULL, "open", "https://github.com/marcpages2020", NULL, NULL, SW_SHOWNORMAL);
-
-
-		ImGui::Spacing();
 		ImGui::Separator();
+		ImGui::Text("By Marc Palma Turon and Pol Juan Santos.");
 		ImGui::Spacing();
+		ImGui::Text("A false engine better than the original.");
+		ImGui::Spacing();
+		if (ImGui::Button("Marc Palma Github"))
+		{
+			ShellExecuteA(NULL, "open", "https://github.com/marcpt98", NULL, NULL, SW_SHOWNORMAL);
+		}
+		if (ImGui::Button("Pol Juan Github"))
+		{
+			ShellExecuteA(NULL, "open", "https://github.com/Sauko22", NULL, NULL, SW_SHOWNORMAL);
+		}
+		ImGui::Spacing();
+		
 
 		ImGui::Text("External libraries used: ");
 
@@ -69,37 +73,21 @@ void WindowAbout::Draw()
 		ImGui::Spacing();
 		ImGui::Separator();
 		ImGui::Spacing();
-
-		ImGui::Text("License: ");
+		ImGui::Text("Licence:");
 		ImGui::Spacing();
-
-		ImGui::Text("MIT License");
-		ImGui::Spacing();
-
-		ImGui::TextWrapped("Copyright (c) 2020 Marc Pages Francesch");
-		ImGui::Spacing();
-		ImGui::TextWrapped(
-			"Permission is hereby granted, free of charge, to any person obtaining a copy"
-			"of this software and associated documentation files Genesis Engine, to deal"
-			"in the Software without restriction, including without limitation the rights"
-			"to use, copy, modify, merge, publish, distribute, sublicense, and /or sell"
-			"copies of the Software, and to permit persons to whom the Software is"
-			"furnished to do so, subject to the following conditions : ");
-		ImGui::Spacing();
-
-		ImGui::TextWrapped(
-			"The above copyright notice and this permission notice shall be included in all"
-			"copies or substantial portions of the Software.");
-		ImGui::Spacing();
-
-		ImGui::TextWrapped(
-			"THE SOFTWARE IS PROVIDED 'AS I', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR"
-			"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,"
-			"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE"
-			"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER"
-			"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,"
-			"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE"
-			"SOFTWARE.");
+		ImGui::Text("MIT License Copyright(c)[2019][Pol Juan Santos and Marc Palma Turon]");
+		ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
+		ImGui::Text("of this softwareand associated documentation files(the Software), to deal");
+		ImGui::Text("in the Software without restriction, including without limitation the rights to use, copy,");
+		ImGui::Text("modify, merge, publish, distribute, sublicense, and /or sell copies of the Software,");
+		ImGui::Text("and to permit persons to whom the Software is furnished to do so, subject to the following conditions:");
+		ImGui::Text("The above copyright noticeand this permission notice shall be included in all");
+		ImGui::Text("copies or substantial portions of the Software.");
+		ImGui::Text("THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,");
+		ImGui::Text("INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE");
+		ImGui::Text("AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,");
+		ImGui::Text("DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,");
+		ImGui::Text("OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
 	}
 	ImGui::End();
 }
