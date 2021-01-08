@@ -109,8 +109,10 @@ void Animation::Update()
 	}
 	
 	// Draw Bones
-	if(viewbones)
-	Render();
+	if (viewbones)
+	{
+		Render();
+	}
 }
 
 void Animation::CheckAnimState()
@@ -303,4 +305,3 @@ void Animation::OnEditor()
 		ImGui::Spacing();
 	}
 }
-
