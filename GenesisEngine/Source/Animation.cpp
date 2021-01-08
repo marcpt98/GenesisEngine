@@ -28,6 +28,7 @@ Animation::Animation() : Component(), name("No name"), _resource(nullptr)
 	animations_size = 3;
 	actualState = ST_IDLE;
 	attack_anim = false;
+	viewbones = false;
 }
 
 Animation::~Animation()
@@ -108,6 +109,7 @@ void Animation::Update()
 	}
 	
 	// Draw Bones
+	if(viewbones)
 	Render();
 }
 
@@ -291,6 +293,12 @@ void Animation::OnEditor()
 			ImGui::Text("Channels: %d Duration: %f", _resource->anim_NumChannels, _resource->anim_Duration);
 			ImGui::Text("Ticks: %f", _resource->anim_TicksPerSecond);
 			ImGui::Text("Current animation time: %d", anim_time);
+
+			ImGui::Spacing();
+			ImGui::Separator();
+			ImGui::Spacing();
+
+			ImGui::Checkbox("Show Bones", &viewbones);
 		}
 		else
 		{
