@@ -39,12 +39,15 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 			model->materials.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aimaterial, ResourceType::RESOURCE_MATERIAL));
 		}
 
-		if (scene->mNumAnimations > 0)
+		if (model->meshes.size() != 18)
 		{
-			for (size_t i = 0; i < scene->mNumAnimations; i++)
+			if (scene->mNumAnimations > 0)
 			{
-				aiAnimation* aianimation = scene->mAnimations[i];
-				model->animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
+				for (size_t i = 0; i < scene->mNumAnimations; i++)
+				{
+					aiAnimation* aianimation = scene->mAnimations[i];
+					model->animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
+				}
 			}
 		}
 		

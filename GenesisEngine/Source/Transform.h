@@ -26,6 +26,7 @@ public:
 	void SetGlobalTransform(float4x4 newTransform);
 
 	void UpdateLocalTransform();
+	void UpdateMatrix(Transform* transform);
 	void UpdateTRS();
 	void UpdateGlobalTransform();
 	void UpdateGlobalTransform(float4x4 parentGlobalTransform);

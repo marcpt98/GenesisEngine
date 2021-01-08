@@ -73,37 +73,37 @@ void Animation::Update()
 		init = true;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
-		time = 0;
-		actualState = ST_ATTACK;
-		attack_anim = true;
-	}
-	else if (App->input->GetKey(SDL_SCANCODE_2) == KEY_REPEAT)
-	{
-		actualState = ST_WALK;
-	}
-	else
-	{
-		actualState = ST_IDLE;
-	}
-
-	if (attack_anim == true)
-	{
-		actualState = ST_ATTACK;
-	}
-
-	CheckAnimState();
-
-	// Loop
-	if (anim_time > currentanimation->anim_Duration)
-	{
-		time = 0;
-	}
-
 	// Update animation only on play mode
 	if (App->editor->play_anim == true)
 	{
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		{
+			time = 0;
+			actualState = ST_ATTACK;
+			attack_anim = true;
+		}
+		else if (App->input->GetKey(SDL_SCANCODE_2) == KEY_REPEAT)
+		{
+			actualState = ST_WALK;
+		}
+		else
+		{
+			actualState = ST_IDLE;
+		}
+
+		if (attack_anim == true)
+		{
+			actualState = ST_ATTACK;
+		}
+
+		CheckAnimState();
+
+		// Loop
+		if (anim_time > currentanimation->anim_Duration)
+		{
+			time = 0;
+		}
+
 		PlayAnimation();
 	}
 	
@@ -183,14 +183,7 @@ void Animation::PlayAnimationTransform()
 		}
 
 		// Update matrix
-		float4x4 Transform = transform->GetGlobalTransform().Transposed();
-		float tempTransform[16];
-		memcpy(tempTransform, Transform.ptr(), 16 * sizeof(float));
-
-		float4x4 newTransform;
-		newTransform.Set(tempTransform);
-		Transform = newTransform.Transposed();
-		transform->SetGlobalTransform(Transform);
+		transform->UpdateMatrix(transform);
 	}
 }
 

@@ -129,6 +129,17 @@ void Transform::UpdateLocalTransform()
 	UpdateEulerRotation();
 }
 
+void Transform::UpdateMatrix(Transform* transform)
+{
+	float4x4 Transform = transform->GetGlobalTransform().Transposed();
+	float tempTransform[16];
+	memcpy(tempTransform, Transform.ptr(), 16 * sizeof(float));
+	float4x4 newTransform;
+	newTransform.Set(tempTransform);
+	Transform = newTransform.Transposed();
+	transform->SetGlobalTransform(Transform);
+}
+
 void Transform::UpdateTRS()
 {
 	_localTransform.Decompose(_position, _rotation, _scale);

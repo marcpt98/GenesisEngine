@@ -29,11 +29,16 @@ bool ModuleScene::Start()
 
 	// Skeleton
 	GameObject* aniTest = App->resources->RequestGameObject("Assets/Models/Skeleton_Model/aniTest.fbx");
+
+	// Change skeleton scale
+	Transform* transform = (Transform*)aniTest->GetComponent(ComponentType::TRANSFORM);
+	transform->SetScale(0.3, 0.3, 0.3);
+	transform->UpdateMatrix(transform);
 	AddGameObject(aniTest);
 
 	// Street
-	/*GameObject* street_environment = App->resources->RequestGameObject("Assets/Models/street/Street environment_V01.fbx");
-	AddGameObject(street_environment);*/
+	GameObject* street_environment = App->resources->RequestGameObject("Assets/Models/street/Street environment_V01.fbx");
+	AddGameObject(street_environment);
 	
 	GameObject* camera = new GameObject();
 	camera->AddComponent(ComponentType::CAMERA);
