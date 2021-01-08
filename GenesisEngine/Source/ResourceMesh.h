@@ -15,6 +15,7 @@ public:
 	void Load(GnJSONObj& base_object);
 
 	void GenerateBuffers();
+	void GenerateAnimBuffers();
 	void DeleteBuffers();
 
 public:
@@ -50,7 +51,7 @@ public:
 
 	// Transformation from bind pose to bone space
 	std::vector<float4x4> boneOffsets;
-	std::vector<float4x4> boneTransforms;
+	std::vector<float4x4> boneSize;
 
 private:
 	bool _buffers_created;

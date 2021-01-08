@@ -32,6 +32,8 @@ public:
 	void InitAnimation();
 	void AddAnimations();
 	void PlayAnimation();
+	void PlayAnimationTransform();
+	void PlayAnimationMesh(GameObject* gameobject);
 
 public:
 	ResourceAnimation* _resource;
@@ -40,6 +42,7 @@ public:
 	char* path;
 
 	GameObject* rootChannel;
+	GnMesh* mesh;
 	std::map<std::string, GameObject*> anim_channels;
 
 	std::vector<ResourceAnimation*> animations;

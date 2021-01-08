@@ -104,7 +104,7 @@ void MeshImporter::Import(const aiMesh* aimesh, ResourceMesh* mesh)
 	// Import Bones
 	if (aimesh->HasBones())
 	{
-		mesh->boneTransforms.resize(aimesh->mNumBones);
+		mesh->boneSize.resize(aimesh->mNumBones);
 
 		mesh->boneID = aimesh->mNumVertices * 4;
 		mesh->boneWeight = aimesh->mNumVertices * 4;
@@ -273,7 +273,7 @@ bool MeshImporter::Load(char* fileBuffer, ResourceMesh* mesh, uint size)
 	memcpy(&bonesSize, cursor, bytes);
 	cursor += bytes;
 
-	mesh->boneTransforms.resize(bonesSize);
+	mesh->boneSize.resize(bonesSize);
 	mesh->boneOffsets.resize(bonesSize);
 
 	mesh->indices_amount = ranges[0];
@@ -339,7 +339,7 @@ bool MeshImporter::Load(char* fileBuffer, ResourceMesh* mesh, uint size)
 	}
 
 	char name[30];
-	for (uint i = 0; i < mesh->boneTransforms.size(); ++i)
+	for (uint i = 0; i < mesh->boneSize.size(); ++i)
 	{
 		_bytes = sizeof(uint);
 		uint stringSize = 0;

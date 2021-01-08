@@ -21,6 +21,7 @@ Animation::Animation() : Component(), name("No name"), _resource(nullptr)
 	name = nullptr;
 	path = nullptr;
 	rootChannel = nullptr;
+	mesh = nullptr;
 	currentanimation = nullptr;
 	init = false;
 	anim_time = 0;
@@ -42,6 +43,12 @@ void Animation::InitAnimation()
 
 	// Get root gameobject with all channels
 	rootChannel = _gameObject->children[1]->children[0];
+	
+	// Get gameobject with mesh
+	mesh = (GnMesh*)_gameObject->children[0]->GetComponent(ComponentType::MESH);
+
+	// Create mesh animated
+	mesh->CreateAnimMesh();
 
 	// Order gameobjects
 	std::vector<GameObject*> channels;
@@ -82,6 +89,12 @@ void Animation::Update()
 
 void Animation::PlayAnimation()
 {
+	PlayAnimationTransform();
+	PlayAnimationMesh(_gameObject->children[0]);
+}
+
+void Animation::PlayAnimationTransform()
+{
 	for (std::map<std::string, GameObject*>::iterator it = anim_channels.begin(); it != anim_channels.end(); it++)
 	{
 		// Get channel related with gameobject on list
@@ -117,6 +130,16 @@ void Animation::PlayAnimation()
 		newTransform.Set(tempTransform);
 		Transform = newTransform.Transposed();
 		transform->SetGlobalTransform(Transform);
+	}
+}
+
+void Animation::PlayAnimationMesh(GameObject* gameObject)
+{
+	mesh->DeformMesh();
+
+	for (size_t i = 0; i < gameObject->GetChildrenAmount(); i++)
+	{
+		PlayAnimationMesh(gameObject->GetChildAt(i));
 	}
 }
 

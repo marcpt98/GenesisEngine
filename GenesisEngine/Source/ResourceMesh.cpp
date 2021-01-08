@@ -57,6 +57,17 @@ void ResourceMesh::GenerateBuffers()
 	_buffers_created = true;
 }
 
+void ResourceMesh::GenerateAnimBuffers()
+{
+	//vertices
+	glBindBuffer(GL_ARRAY_BUFFER, vertices_buffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertices_amount * 3, vertices, GL_STATIC_DRAW);
+
+	//normals
+	glBindBuffer(GL_NORMAL_ARRAY, normals_buffer);
+	glBufferData(GL_NORMAL_ARRAY, sizeof(float) * vertices_amount * 3, normals, GL_STATIC_DRAW);
+}
+
 void ResourceMesh::DeleteBuffers()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

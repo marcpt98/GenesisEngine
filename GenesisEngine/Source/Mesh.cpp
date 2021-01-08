@@ -5,6 +5,7 @@
 #include "Material.h"
 #include "GameObject.h"
 #include "Transform.h"
+#include "Animation.h"
 #include "GnJSON.h"
 
 #include "ResourceMesh.h"
@@ -17,6 +18,7 @@
 GnMesh::GnMesh() : Component(), draw_face_normals(false), draw_vertex_normals(false), name("No name"), _resource(nullptr)
 {
 	type = ComponentType::MESH;
+	anim_mesh = nullptr;
 }
 
 GnMesh::~GnMesh() 
@@ -89,32 +91,62 @@ void GnMesh::Render()
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	//vertices
-	glBindBuffer(GL_ARRAY_BUFFER, _resource->vertices_buffer);
-	glVertexPointer(3, GL_FLOAT, 0, NULL);
+	if (anim_mesh != nullptr)
+	{
+		//vertices
+		glBindBuffer(GL_ARRAY_BUFFER, anim_mesh->vertices_buffer);
+		glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	//normals
-	glBindBuffer(GL_NORMAL_ARRAY, _resource->normals_buffer);
-	glNormalPointer(GL_FLOAT, 0, NULL);
+		//normals
+		glBindBuffer(GL_NORMAL_ARRAY, anim_mesh->normals_buffer);
+		glNormalPointer(GL_FLOAT, 0, NULL);
 
-	//textures
-	glBindBuffer(GL_ARRAY_BUFFER, _resource->texcoords_buffer);
-	glTexCoordPointer(2, GL_FLOAT, 0, NULL);
+		//textures
+		glBindBuffer(GL_ARRAY_BUFFER, anim_mesh->texcoords_buffer);
+		glTexCoordPointer(2, GL_FLOAT, 0, NULL);
 
-	//indices
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _resource->indices_buffer);
+		//indices
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, anim_mesh->indices_buffer);
 
-	glPushMatrix();
-	glMultMatrixf((float*)&_gameObject->GetTransform()->GetGlobalTransform().Transposed());
+		glPushMatrix();
+		glMultMatrixf((float*)&_gameObject->GetTransform()->GetGlobalTransform().Transposed());
 
-	Material* material = dynamic_cast<Material*>(_gameObject->GetComponent(ComponentType::MATERIAL));
+		Material* material = dynamic_cast<Material*>(_gameObject->GetComponent(ComponentType::MATERIAL));
 
-	if (material != nullptr)
-		material->BindTexture();
+		if (material != nullptr)
+			material->BindTexture();
 
-	glDrawElements(GL_TRIANGLES, _resource->indices_amount, GL_UNSIGNED_INT, NULL);
+		glDrawElements(GL_TRIANGLES, anim_mesh->indices_amount, GL_UNSIGNED_INT, NULL);
+	}
+	else
+	{
+		//vertices
+		glBindBuffer(GL_ARRAY_BUFFER, _resource->vertices_buffer);
+		glVertexPointer(3, GL_FLOAT, 0, NULL);
 
-	if(draw_vertex_normals ||App->renderer3D->draw_vertex_normals)
+		//normals
+		glBindBuffer(GL_NORMAL_ARRAY, _resource->normals_buffer);
+		glNormalPointer(GL_FLOAT, 0, NULL);
+
+		//textures
+		glBindBuffer(GL_ARRAY_BUFFER, _resource->texcoords_buffer);
+		glTexCoordPointer(2, GL_FLOAT, 0, NULL);
+
+		//indices
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _resource->indices_buffer);
+
+		glPushMatrix();
+		glMultMatrixf((float*)&_gameObject->GetTransform()->GetGlobalTransform().Transposed());
+
+		Material* material = dynamic_cast<Material*>(_gameObject->GetComponent(ComponentType::MATERIAL));
+
+		if (material != nullptr)
+			material->BindTexture();
+
+		glDrawElements(GL_TRIANGLES, _resource->indices_amount, GL_UNSIGNED_INT, NULL);
+	}
+
+	if(draw_vertex_normals || App->renderer3D->draw_vertex_normals)
 		DrawVertexNormals();
 
 	if (draw_face_normals || App->renderer3D->draw_face_normals)
@@ -133,6 +165,84 @@ void GnMesh::Render()
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+}
+
+void GnMesh::CreateAnimMesh()
+{
+	anim_mesh = new ResourceMesh(App->resources->GenerateUID());
+
+	anim_mesh->indices_amount = _resource->indices_amount;
+	anim_mesh->vertices_amount = _resource->vertices_amount;
+	anim_mesh->normals_amount = _resource->normals_amount;
+	anim_mesh->texcoords_amount = _resource->texcoords_amount;
+
+	anim_mesh->indices = new uint[_resource->indices_amount];
+	anim_mesh->vertices = new float[_resource->vertices_amount * 3];
+	anim_mesh->normals = new float[_resource->normals_amount * 3];
+	anim_mesh->texcoords = new float[_resource->texcoords_amount * 2];
+
+	memcpy(anim_mesh->indices, _resource->indices, _resource->indices_amount * sizeof(uint));
+	memcpy(anim_mesh->texcoords, _resource->texcoords, _resource->texcoords_amount * 2 * sizeof(float));
+
+	memset(anim_mesh->vertices, 0, anim_mesh->vertices_amount * sizeof(float) * 3);
+	memset(anim_mesh->normals, 0, anim_mesh->normals_amount * sizeof(float) * 3);
+	memset(anim_mesh->normals, 0, anim_mesh->texcoords_amount * sizeof(float) * 2);
+	
+	anim_mesh->GenerateBuffers();
+}
+
+void GnMesh::DeformMesh()
+{
+	// Reset values
+	memset(anim_mesh->vertices, 0, anim_mesh->vertices_amount * sizeof(float) * 3);
+	memset(anim_mesh->normals, 0, anim_mesh->normals_amount * sizeof(float) * 3);
+	memset(anim_mesh->normals, 0, anim_mesh->texcoords_amount * sizeof(float) * 2);
+
+	// Calculate delta transform
+	std::vector<float4x4> matrix;
+	matrix.resize(_resource->boneOffsets.size());
+
+	for (std::map<std::string, uint>::iterator it = _resource->boneMapping.begin(); it != _resource->boneMapping.end(); it++)
+	{
+		Animation* animation = (Animation*)_gameObject->GetParent()->GetComponent(ComponentType::ANIMATION);
+		GameObject* channel = animation->anim_channels[it->first];
+
+		Transform* transform = (Transform*)channel->GetComponent(ComponentType::TRANSFORM);
+		float4x4 delta = transform->GetGlobalTransform();
+
+		Transform* _transform = (Transform*)_gameObject->GetComponent(ComponentType::TRANSFORM);
+		delta = _transform->GetGlobalTransform().Inverted() * delta;
+		delta = delta * _resource->boneOffsets[it->second];
+		matrix[it->second] = delta;
+	}
+
+	// Calculate full transformed vertex
+	for (int i = 0; i < _resource->vertices_amount; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			int boneID = _resource->boneIDs[i * 4 + j];
+
+			if (boneID != -1)
+			{
+				float boneWeight = _resource->boneWeights[i * 4 + j];
+
+				float3 original = float3(&_resource->vertices[i * 3]);
+				float3 vertex = matrix[boneID].TransformPos(original);
+				anim_mesh->vertices[i * 3] += vertex.x * boneWeight;
+				anim_mesh->vertices[i * 3 + 1] += vertex.y * boneWeight;
+				anim_mesh->vertices[i * 3 + 2] += vertex.z * boneWeight;
+
+				original = float3(&_resource->normals[i * 3]);
+				vertex = matrix[boneID].TransformPos(original);
+				anim_mesh->normals[i * 3] += vertex.x * boneWeight;
+				anim_mesh->normals[i * 3 + 1] += vertex.y * boneWeight;
+				anim_mesh->normals[i * 3 + 2] += vertex.z * boneWeight;
+			}
+		}
+	}
+
+	anim_mesh->GenerateAnimBuffers();
 }
 
 void GnMesh::OnEditor()

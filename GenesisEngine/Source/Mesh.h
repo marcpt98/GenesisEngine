@@ -32,9 +32,14 @@ public:
 	void DrawVertexNormals();
 	void DrawFaceNormals();
 
+	void DeformMesh();
+	void CreateAnimMesh();
+
 public:
 	const char* name;
 	char* path;
+
+	ResourceMesh* anim_mesh;
 
 private:
 	AABB _AABB;
@@ -43,7 +48,6 @@ private:
 	bool draw_face_normals;
 
 	ResourceMesh* _resource;
-	
 };
 
 class GnCube : public GnMesh {
