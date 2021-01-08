@@ -63,4 +63,6 @@ public:
 	bool init;
 	int animations_size;
 	bool attack_anim;
+
+	bool viewbones;
 };
