@@ -40,6 +40,8 @@ Editor::Editor(bool start_enabled) : Module(start_enabled)
 	scene_window_focused = false;
 	show_game_buttons = true;
 
+	play_anim = false;
+
 	current_theme = 1;
 
 	image_size = { 0,0 };
@@ -448,23 +450,37 @@ void Editor::ShowGameButtons()
 		if (App->in_game == false)
 		{
 			if (ImGui::Button("Play", ImVec2(40, 20)))
+			{
 				App->StartGame();
+				play_anim = true;
+			}
 		}
 		else {
 			if (ImGui::Button("Stop", ImVec2(40, 20)))
+			{
 				App->StopGame();
+				play_anim = false;
+			}
 		}
 
 		ImGui::NextColumn();
 		if (Time::gameClock.paused) 
 		{
 			if (ImGui::Button("Resume", ImVec2(45, 20)))
+			{
 				Time::gameClock.Resume();
+				play_anim = true;
+			}
+				
 		}
 		else 
 		{
-			if (ImGui::Button("Pause", ImVec2(45, 20))) 
+			if (ImGui::Button("Pause", ImVec2(45, 20)))
+			{
 				Time::gameClock.Pause();
+				play_anim = false;
+			}
+				
 		}
 
 	}

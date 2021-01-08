@@ -2,7 +2,6 @@
 
 #include "Timer.h"
 #include "ResourceAnimation.h"
-#include "ResourceAnimationManager.h"
 
 #include "Assimp/Assimp/include/cimport.h"
 #include "Assimp/Assimp/include/scene.h"
@@ -259,45 +258,4 @@ void AnimationImporter::LoadChannel(Channel& channel, char** cursor)
 		channel.chan_RotKeys[time] = Quat(data);
 		channel.chan_NumRotKeys++;
 	}
-}
-
-uint64 AnimationManagerImporter::Save(ResourceAnimationManager* animationmanager, char** fileBuffer)
-{
-	char* buffer;
-
-	GnJSONObj base_object;
-	GnJSONArray nodes_array = base_object.AddArray("Animation");
-
-	for (size_t i = 0; i < animationmanager->animations.size(); i++)
-	{
-		GnJSONObj node_object;
-
-		node_object.AddInt("UID", animationmanager->animations[i]);
-
-		nodes_array.AddObject(node_object);
-	}
-
-	uint size = base_object.Save(&buffer);
-	*fileBuffer = buffer;
-
-	return size;
-}
-
-bool AnimationManagerImporter::Load(char* fileBuffer, ResourceAnimationManager* animationmanager, uint size)
-{
-	bool ret = true;
-
-	GnJSONObj animation_data(fileBuffer);
-	GnJSONArray nodes_array = animation_data.GetArray("Animation");
-
-	for (size_t i = 0; i < nodes_array.Size(); i++)
-	{
-		GnJSONObj nodeObject = nodes_array.GetObjectAt(i);
-
-		animationmanager->AddAnimation(nodeObject.GetInt("UID"));
-	}
-
-	animation_data.Release();
-
-	return ret;
 }

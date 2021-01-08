@@ -3,7 +3,6 @@
 #include "Resource.h"
 #include "GnJSON.h"
 #include <vector>
-#include "ResourceAnimationManager.h"
 
 class Light;
 class Camera;
@@ -34,7 +33,7 @@ public:
 public:
 	std::vector<ModelNode> nodes;
 	std::vector<uint> meshes;
-	std::vector<ResourceAnimationManager*> animations;
+	std::vector<uint> animations;
 	std::vector<uint> materials;
 	std::vector<uint> textures;
 	std::vector<Light*> lights;

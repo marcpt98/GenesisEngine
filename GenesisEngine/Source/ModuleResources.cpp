@@ -13,7 +13,6 @@
 #include "ResourceMaterial.h"
 #include "ResourceTexture.h"
 #include "ResourceAnimation.h"
-#include "ResourceAnimationManager.h"
 
 #include "WindowImport.h"
 #include "WindowAssets.h"
@@ -590,9 +589,6 @@ Resource* ModuleResources::LoadResource(uint UID, ResourceType type)
 		case RESOURCE_ANIMATION:
 			ret = AnimationImporter::Load(buffer, (ResourceAnimation*)resource, size);
 			break;
-		case RESOURCE_ANIMATION_MANAGER:
-			ret = AnimationManagerImporter::Load(buffer, (ResourceAnimationManager*)resource, size);
-			break;
 		case RESOURCE_TEXTURE:
 			ret = TextureImporter::Load(buffer, (ResourceTexture*)resource, size);
 			LoadMetaFile(resource);
@@ -670,9 +666,6 @@ Resource* ModuleResources::CreateResource(const char* assetsPath, ResourceType t
 	case RESOURCE_ANIMATION:
 		resource = new ResourceAnimation(UID);
 		break;
-	case RESOURCE_ANIMATION_MANAGER:
-		resource = new ResourceAnimationManager(UID);
-		break;
 	case RESOURCE_TEXTURE:
 		resource = new ResourceTexture(UID);
 		break;
@@ -714,9 +707,6 @@ Resource* ModuleResources::CreateResource(uint UID, ResourceType type, std::stri
 		break;
 	case RESOURCE_ANIMATION:
 		resource = new ResourceAnimation(UID);
-		break;
-	case RESOURCE_ANIMATION_MANAGER:
-		resource = new ResourceAnimationManager(UID);
 		break;
 	case RESOURCE_MATERIAL:
 		resource = new ResourceMaterial(UID);
@@ -830,9 +820,6 @@ bool ModuleResources::SaveResource(Resource* resource)
 		break;
 	case RESOURCE_ANIMATION:
 		size = AnimationImporter::Save((ResourceAnimation*)resource, &buffer);
-		break;
-	case RESOURCE_ANIMATION_MANAGER:
-		size = AnimationManagerImporter::Save((ResourceAnimationManager*)resource, &buffer);
 		break;
 	case RESOURCE_MATERIAL:
 		size = MaterialImporter::Save((ResourceMaterial*)resource, &buffer);

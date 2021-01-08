@@ -91,7 +91,7 @@ void GnMesh::Render()
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	if (anim_mesh != nullptr)
+	if (anim_mesh != nullptr && App->editor->play_anim == true)
 	{
 		//vertices
 		glBindBuffer(GL_ARRAY_BUFFER, anim_mesh->vertices_buffer);

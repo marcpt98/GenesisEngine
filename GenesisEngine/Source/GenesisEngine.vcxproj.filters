@@ -239,9 +239,6 @@
     <ClCompile Include="AnimationImporter.cpp">
       <Filter>FileManagement\Importers</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceAnimationManager.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -595,9 +592,6 @@
     </ClInclude>
     <ClInclude Include="AnimationImporter.h">
       <Filter>FileManagement\Importers</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceAnimationManager.h">
-      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

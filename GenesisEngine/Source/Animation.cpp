@@ -7,7 +7,6 @@
 #include "GnJSON.h"
 
 #include "ResourceAnimation.h"
-#include "ResourceAnimationManager.h"
 
 #include "glew/include/glew.h"
 #include "ImGui/imgui.h"
@@ -26,6 +25,9 @@ Animation::Animation() : Component(), name("No name"), _resource(nullptr)
 	init = false;
 	anim_time = 0;
 	time = 0;
+	animations_size = 3;
+	actualState = ST_IDLE;
+	attack_anim = false;
 }
 
 Animation::~Animation()
@@ -60,8 +62,7 @@ void Animation::InitAnimation()
 		anim_channels[channels[i]->name] = channels[i];
 	}
 
-	// Splice (not yet) and add animations
-	AddAnimations();
+	currentanimation = _resource;
 }
 
 void Animation::Update()
@@ -72,9 +73,27 @@ void Animation::Update()
 		init = true;
 	}
 
-	// Animation time
-	time += App->GetLastDt();
-	anim_time = currentanimation->anim_TicksPerSecond * time;
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		time = 0;
+		actualState = ST_ATTACK;
+		attack_anim = true;
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_2) == KEY_REPEAT)
+	{
+		actualState = ST_WALK;
+	}
+	else
+	{
+		actualState = ST_IDLE;
+	}
+
+	if (attack_anim == true)
+	{
+		actualState = ST_ATTACK;
+	}
+
+	CheckAnimState();
 
 	// Loop
 	if (anim_time > currentanimation->anim_Duration)
@@ -82,9 +101,51 @@ void Animation::Update()
 		time = 0;
 	}
 
-	PlayAnimation();
+	// Update animation only on play mode
+	if (App->editor->play_anim == true)
+	{
+		PlayAnimation();
+	}
 	
+	// Draw Bones
 	Render();
+}
+
+void Animation::CheckAnimState()
+{
+	if (actualState == ST_IDLE)
+	{
+		currentanimation->anim_Duration = 46;
+
+		// Animation time
+		time += App->GetLastDt();
+		anim_time = currentanimation->anim_TicksPerSecond * time;
+	}
+
+	if (actualState == ST_WALK)
+	{
+		currentanimation->anim_Duration = 70;
+
+		// Animation time
+		time += App->GetLastDt();
+		anim_time = currentanimation->anim_TicksPerSecond * time;
+		anim_time += 48;
+	}
+
+	if (actualState == ST_ATTACK)
+	{
+		currentanimation->anim_Duration = 119;
+
+		// Animation time
+		time += App->GetLastDt();
+		anim_time = currentanimation->anim_TicksPerSecond * time;
+		anim_time += 72;
+
+		if (anim_time == 119)
+		{
+			attack_anim = false;
+		}
+	}
 }
 
 void Animation::PlayAnimation()
@@ -171,15 +232,6 @@ void Animation::Render()
 			App->renderer3D->DrawCustomRay(startpos, endpos);
 		}
 	}
-}
-
-void Animation::AddAnimations()
-{
-	ResourceAnimationManager* animationlist = (ResourceAnimationManager*)App->resources->CreateResource(App->resources->GenerateUID(), ResourceType::RESOURCE_ANIMATION_MANAGER);
-
-	animationlist->AddAnimation(_resource->GetUID());
-
-	currentanimation = _resource;
 }
 
 void Animation::Save(GnJSONArray& save_array)

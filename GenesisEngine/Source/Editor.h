@@ -58,6 +58,9 @@ public:
 	bool scene_window_focused;
 	EditorWindow* windows[MAX_WINDOWS];
 
+	// Animation
+	bool play_anim;
+
 private:
 
 	bool show_project_window;

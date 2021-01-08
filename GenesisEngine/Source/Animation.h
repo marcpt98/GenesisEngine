@@ -9,10 +9,16 @@
 #include <map>
 
 class ResourceAnimation;
-class ResourceAnimationManager;
 class GameObject;
 class Channel;
 class GnMesh;
+
+enum Anim_States
+{
+	ST_IDLE,
+	ST_WALK,
+	ST_ATTACK
+};
 
 class Animation : public Component 
 {
@@ -30,7 +36,7 @@ public:
 	virtual void OnEditor() override;
 
 	void InitAnimation();
-	void AddAnimations();
+	void CheckAnimState();
 	void PlayAnimation();
 	void PlayAnimationTransform();
 	void PlayAnimationMesh(GameObject* gameobject);
@@ -48,9 +54,13 @@ public:
 	std::vector<ResourceAnimation*> animations;
 
 	ResourceAnimation* currentanimation;
+	
+	Anim_States	actualState;
 
 	uint anim_time;
 	float time;
 
 	bool init;
+	int animations_size;
+	bool attack_anim;
 };

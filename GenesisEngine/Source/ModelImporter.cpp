@@ -11,7 +11,6 @@
 #include "Camera.h"
 
 #include "ResourceModel.h"
-#include "ResourceAnimationManager.h"
 
 #include "Assimp/Assimp/include/cimport.h"
 #include "Assimp/Assimp/include/scene.h"
@@ -25,8 +24,6 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 
 	const aiScene* scene = nullptr;
 	scene = aiImportFileFromMemory(fileBuffer, size, aiProcessPreset_TargetRealtime_MaxQuality, NULL);
-
-	std::vector<uint64> animations;
 
 	if (scene != nullptr && scene->HasMeshes())
 	{
@@ -44,20 +41,11 @@ void ModelImporter::Import(char* fileBuffer, ResourceModel* model, uint size)
 
 		if (scene->mNumAnimations > 0)
 		{
-			ResourceAnimationManager* animationmanager = nullptr;
-			animationmanager = (ResourceAnimationManager*)App->resources->CreateResource(App->resources->GenerateUID(), RESOURCE_ANIMATION_MANAGER, "assets/models/skeleton_model/animation.animationmanager");
-			
 			for (size_t i = 0; i < scene->mNumAnimations; i++)
 			{
 				aiAnimation* aianimation = scene->mAnimations[i];
-				animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
-				animationmanager->AddAnimation(animations.back());
+				model->animations.push_back(App->resources->ImportInternalResource(model->assetsFile.c_str(), aianimation, ResourceType::RESOURCE_ANIMATION));
 			}
-			animationmanager->SetUID(animations.back());
-			char* library_path = new char[128];
-			animationmanager->libraryFile = "assets/models/skeleton_model/animation.animationmanager";
-			model->animations.push_back(animationmanager);
-			App->resources->SaveResource(animationmanager);
 		}
 		
 		if (!App->resources->modelImportingOptions.ignoreLights)
@@ -187,8 +175,8 @@ uint64 ModelImporter::Save(ResourceModel* model, char** fileBuffer)
 
 		if (!model->animations.empty() && i == 0)
 		{
-			node_object.AddInt("AnimationID", model->animations[0]->GetUID());
-			node_object.AddString("animation_library_path", App->resources->GenerateLibraryPath(model->animations[0]->GetUID(), ResourceType::RESOURCE_ANIMATION).c_str() );
+			node_object.AddInt("AnimationID", model->animations[i]);
+			node_object.AddString("animation_library_path", App->resources->GenerateLibraryPath(model->animations[i], ResourceType::RESOURCE_ANIMATION).c_str() );
 		}
 
 		if (model->nodes[i].meshID != -1)
