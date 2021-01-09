@@ -7,11 +7,11 @@ layout: default
     <img src="https://github.com/marcpt98/Unfalse-Engine-2.0/blob/gh-pages/GenesisEngine/Image/logo.png?raw=true">
    
     <h2>
-      What is Elementorum?
+     The Engine
     </h2>
     <img src=" https://cdn.discordapp.com/attachments/555497331848380447/660951239395377176/unknown.png?width=556&height=434">
    
-    <p>Elementorum is a 2D action plataformer where you control our character Derexito! a little koala that has to fight against hard enemies while completing the level jumping against walls! </br> We've made this game for the UPC assignment Development.</p>
+    <p>Unfalse Engine is a game engine made with C & C++ by two students from the 3rd grade of Design and Development of Videogames, from the CITM UPC (Terrassa). Marc Palma & Pol Juan were the responsibles to make this project come true. </br> Our project is split in two parts, where the first and second assignments were programmed in the original engine <a href="https://github.com/Sauko22/Unfalse-Engine">Unfalse Engine</a>. But unfortunately, we had to fork from the engine of <a href="https://github.com/marcpages2020/GenesisEngine">Marc Pagès</a> to make the third and last assignment.  </p>
     
     <h2>Gameplay video...enjoy!</h2>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/bbJLTymIAWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
