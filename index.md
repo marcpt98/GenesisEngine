@@ -44,7 +44,7 @@ layout: default
      
      
     <h2>Showcase</h2>
-<iframe width="420" height="315" src="https://youtu.be/DVk-yDgaHPs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+<iframe width="420" height="315" src="https://youtu.be/DVk-yDgaHPs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
      
      
    
@@ -54,7 +54,7 @@ layout: default
 
  <h4>Do you want to try out the ENGINE? Download it using this <a href="https://github.com/marcpt98/Unfalse-Engine-2.0/releases/tag/0.3">link</a>!</h4>
   <h4> Download the original engine using this <a href="https://github.com/Sauko22/Unfalse-Engine/releases/tag/0.2">link</a>!</h4>
- <h4>For more information, check our <a href="https://github.com/marcpt98/Unfalse-Engine-2.0">repository</a> in Github: </h4> </br>
+ <h4>For more information, check our <a href="https://github.com/marcpt98/Unfalse-Engine-2.0">repository</a> in Github: </h4> 
      
 <h2>
     Licence
