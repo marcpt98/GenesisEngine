@@ -44,7 +44,7 @@ layout: default
      
      
     <h2>Showcase</h2>
-<iframe width="420" height="315" src="https://www.youtube.com/watch?v=DVk-yDgaHPs&feature=youtu.be&ab_channel=PolJuan" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+<iframe width="420" height="315" src="https://youtu.be/DVk-yDgaHPs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
      
      
    
