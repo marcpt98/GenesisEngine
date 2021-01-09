@@ -39,63 +39,22 @@ layout: default
       
     
     <h2>Skeletal Animation</h2> 
-     Read the animation from the model and reproduces it in the engine.
+     Read the animation from the model and reproduces it in the engine. It generate a skeleton, that moves all vertices acordingly generating real time animations.
       
      
      
-    <h2>Gameplay video...enjoy!</h2>
-<iframe width="420" height="315" src="https://www.youtube.com/embed/bbJLTymIAWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+    <h2>Showcase</h2>
+<iframe width="420" height="315" src="https://www.youtube.com/watch?v=DVk-yDgaHPs&feature=youtu.be&ab_channel=PolJuan" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
      
      
-    <h2>
-     How to play (controls):
-    </h2>
-       <h3>
-    Character controls:
-    </h3>
-    - A: Move left </br>
-    - D: Move right </br>
-    - F: Shoot </br>
-    - SPACE BAR: Jump </br>
-     <h3>
-    Special controls:
-    </h3>
-    - F1: Charge level 1 from the begining </br>
-    - F2: Charge level 2 from the begining </br>
-    - F3: Charge current level from the begining </br>
-    - F5: Save your current position </br>
-    - F6: Load your past position </br>
-    - F8: Show all UI debug </br>
-    - F9: Show all colliders and pathfinding </br>
-    - F10: God mode (player without collisions and can fly) </br>
-    - F11: Cap frames (siwtch fps cap between 30-60) </br>
-    - º: Open console </br>
-
-<h2>
-     Innovation:
-</h2>
-- Enemy states and patrol </br>
-- Game pause </br>
-- Jump particles</br>
-- Coldown on projectiles </br>
-- Particle effects </br>
-- Checkpoints </br>
-- Every 1000 points you gain an extra life (if you get 1000 points (an extra life) and die, </br>
-you have to get to 2000 points for another extra life)
-
-<h2>
-     Main core subsystems
-</h2>
-This game has 3 main core subsystems: </br>
-- Entity core: in charge of the management of all the objects in the game (player, enemies with pathfinding, coins and checkpoints). This core controls the addition, elimination, save and load of all entities. All the management can be controlled throught the EntityManager module. Every entity has his own movement, states and physics but they share variables that are located in the Entity module. </br>
-- UI core: in charge of the management of all HUD in the game (windows, menus, buttons, sliders, images and texts). This core, like the entity core, can control the addition, elimination of his elements. All the management can be controlled throught the Gui and SceneUI modules. Every UI also have some common variables and are located in the UI_element module. </br>
-- Scene core: in charge of the management of the maps and keybinds of the game. All the management can be controlled throught the Scene module. In this module you can control the load and unload of the maps and music. Also, in this module you have all the keybinds functionality. </br>
+   
 
     <h2>So…
        </h2>
 
- <h4>Do you want to try out the game? Download it using this <a href="https://github.com/marcpt98/Plataformer-2D/releases/tag/1.0">link</a>!</h4>
- <h4>For more information, check our <a href="https://github.com/marcpt98/Plataformer-2D">repository</a> in Github: </h4> </br>
+ <h4>Do you want to try out the ENGINE? Download it using this <a href="https://github.com/marcpt98/Unfalse-Engine-2.0/releases/tag/0.3">link</a>!</h4>
+  <h4> Download the original engine using this <a href="https://github.com/Sauko22/Unfalse-Engine/releases/tag/0.2">link</a>!</h4>
+ <h4>For more information, check our <a href="https://github.com/marcpt98/Unfalse-Engine-2.0">repository</a> in Github: </h4> </br>
      
 <h2>
     Licence
@@ -103,7 +62,7 @@ This game has 3 main core subsystems: </br>
 
 //MIT License
 
-Copyright (c) [2019] [Pol de la Torre Solé and Marc Palma Turón]
+Copyright (c) [2021] [Pol Juan Santos  and Marc Palma Turón]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
