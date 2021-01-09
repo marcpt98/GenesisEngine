@@ -25,10 +25,11 @@ layout: default
      <h2>Main Core Sub-system</h2>
      <h4>GameObject and Components</h4>
      Game Objects can be imported and added from the assets folder. Can also create empty game objects, which can be modificate by clicking them on the hierachy.<br/>
-    Every game object has components that are shown in the inspector window. Components such as: Transformation (position, rotation and scale) which determinates their position      in the world , Mesh , Texture, Camera Component and Animation.<br/>
+     Every game object has components that are shown in the inspector window. Components such as: Transformation (position, rotation and scale) which determinates their position      in the world, Mesh, Texture, Camera Component and Animation.<br/>
      
      <h4>Resource Manager</h4>
-      Allows to save some resources, that at the time they will be used they won't have to b
+      System created in order to manage all custom file formats. With this manager you control the import, save and load of all game info (meshes, textures, models...).
+      In-game, this manager allows the user to use everything using only the custom files from library and ignoring the assets files, increasing the speed and performance.
       
      <h4>Scene Management</h4>
       The scene which all the assets are in can be save and load at any time. If the file is not new, it will replace the old one.<br/>
@@ -38,7 +39,7 @@ layout: default
       
     
     <h2>Skeletal Animation</h2> 
-     
+     Read the animation from the model and reproduces it in the engine.
       
      
      
