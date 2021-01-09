@@ -17,9 +17,29 @@ layout: default
     <h4><a href="https://github.com/marcpt98">Marc Palma</a>: Geometry Viewer, Custom File format, Scene Serialization, Camera GameObject, Resource Mangement, Skeletal Animation </h4>
     <img src="https://raw.githubusercontent.com/marcpt98/Fight-club/gh-pages/Web%20images/Foto_marc.png" width="200">
 
-    <h5>Pol De La Torre (Colliders, phisics, level 2, entities, pathfinding, UI): <a href="https://github.com/polf780">Github account</a>.</h5></br>
-    <img src="https://raw.githubusercontent.com/marcpt98/Fight-club/gh-pages/Web%20images/foto_pol_dela_torre.png" width="400">
+      <h4><a href="https://github.com/Sauko22">Pol Juan</a>: Geometry Viewer, Transformation and GameObject Hierachy, Camera GameObject, Play / Stop , Skeletal Animation </h4>
+    <img src="https://github.com/Kalima-Entertainment/Fallout_Strategy/blob/gh-pages/Photos/poljs.jpg?raw=true" width="400">
      <h2>
+     
+     
+     <h2>Main Core Sub-system</h2>
+     <h4>GameObject and Components</h4>
+     Game Objects can be imported and added from the assets folder. Can also create empty game objects, which can be modificate by clicking them on the hierachy.<br/>
+    Every game object has components that are shown in the inspector window. Components such as: Transformation (position, rotation and scale) which determinates their position      in the world , Mesh , Texture, Camera Component and Animation.<br/>
+     
+     <h4>Resource Manager</h4>
+      Allows to save some resources, that at the time they will be used they won't have to b
+      
+     <h4>Scene Management</h4>
+      The scene which all the assets are in can be save and load at any time. If the file is not new, it will replace the old one.<br/>
+      
+     <h4>Custom File</h4>
+      To decrease the waiting time of load and save of files, this engine uses an original and unique file.<br/>
+      
+    
+    <h2>Skeletal Animation</h2> 
+     
+      
      
      
     <h2>Gameplay video...enjoy!</h2>
