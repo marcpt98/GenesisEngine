@@ -15,6 +15,30 @@ https://github.com/marcpt98/Unfalse-Engine-2.0
 - Pol Juan Santos: https://github.com/Sauko22
 - Marc Palma Turon: https://github.com/marcpt98
 
+## Skeletal Animation
+### General Info
+- The model that is loaded into the scene starts in the original pose.
+- In the Hierarchy window can be seen the bone hierarchy, the gameobject with mesh and texture data and the main gameobject that manages the animation.
+
+### Animation Inspector
+With the main gameobject selected, all the component animation options can be seen in the inspector:
+  - Enabled: Enable/Disable update of the component.
+  - Path: Shows the assets and library path of the animation.
+  - Animation info: Shows the channels, duration of the animation that is currently on progress, ticks and the progress of the current animation.
+  - Show Bones: Enable/Disable the inside skeleton (activate wireframe in order to see it).
+  - UID: Resource UID.
+
+### Play/Pause/Stop/Resume
+- Play: In order to see the character animated and the differents animations this button must be pressed.
+- Stop: At any time of the animation, this button can be pressed in order to return to the original character position.
+- Pause/Resume: While play is enabled, this button can be pressed in order to stop the animation in the current frame. If this button is pressed again, the animation continues.
+
+### Play Animations
+This model has a total of 3 animations:
+- Idle: This is the default animation. It'll be played when Play button is pressed or when another animation has finished.
+- Walk: This animation can be triggered by holding key "2". It'll be played until the key is released.
+- Attack: This animation can be triggered by pressing key "1". It'll perform an attack and, after the animation, if the key "2" is still pressed will return to the walk animation and if not, it'll return to idle. This animation can be triggered either in the idle or walking animation.
+
 ## Controls: 
   To freely move the camera in the scene, the scene window must be selected or focused.
 
