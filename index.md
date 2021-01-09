@@ -12,22 +12,19 @@ layout: default
     <img src=" https://media.discordapp.net/attachments/523258896651911212/797526015923847228/unknown.png?width=821&height=640">
    
     <p>Unfalse Engine is a game engine made with C & C++ by two students from the 3rd grade of Design and Development of Videogames, from the CITM UPC (Terrassa). Marc Palma & Pol Juan were the responsibles to make this project come true. Our project is split in two parts, where the first and second assignments were programmed in the original engine <a href="https://github.com/Sauko22/Unfalse-Engine">Unfalse Engine</a>. But unfortunately, we had to fork from the engine of <a href="https://github.com/marcpages2020/GenesisEngine">Marc Pagès</a> to make the third and last assignment.  </p>
-    
-    <h2>Gameplay video...enjoy!</h2>
-<iframe width="420" height="315" src="https://www.youtube.com/embed/bbJLTymIAWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
-   
-    <h2>
-     Who are we?
-    </h2>
-    <img src="https://cdn.discordapp.com/attachments/555497331848380447/660609368068456448/Foto_grup.png?width=486&height=767">
-    <p>We are two students from CITM Terrassa who had created the game Elementorum. Here you can click on "github account" to go to our github accounts.</p>
-    
-    <h5>Marc Palma (Loading things from XML, level 1,animations, keybinds, entities, pathfinding, UI): <a href="https://github.com/marcpt98">Github account</a>.</h5></br>
+      
+    <h2>The Authors</h2>
+    <h4><a href="https://github.com/marcpt98">Marc Palma</a>: Geometry Viewer, Custom File format, Scene Serialization, Camera GameObject, Resource Mangement, Skeletal Animation </h4>
     <img src="https://raw.githubusercontent.com/marcpt98/Fight-club/gh-pages/Web%20images/Foto_marc.png" width="200">
 
     <h5>Pol De La Torre (Colliders, phisics, level 2, entities, pathfinding, UI): <a href="https://github.com/polf780">Github account</a>.</h5></br>
     <img src="https://raw.githubusercontent.com/marcpt98/Fight-club/gh-pages/Web%20images/foto_pol_dela_torre.png" width="400">
      <h2>
+     
+     
+    <h2>Gameplay video...enjoy!</h2>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/bbJLTymIAWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+     
      
     <h2>
      How to play (controls):
