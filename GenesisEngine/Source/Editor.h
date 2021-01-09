@@ -60,6 +60,7 @@ public:
 
 	// Animation
 	bool play_anim;
+	bool pause_anim;
 
 private:
 

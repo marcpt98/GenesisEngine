@@ -40,11 +40,11 @@ public:
 
 public:
 	std::string name;
+	bool enabled;
 
 protected:
 	ComponentType type;
 	GameObject* _gameObject;
-	bool enabled;
 
 	uint _resourceUID;
 };

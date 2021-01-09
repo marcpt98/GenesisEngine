@@ -70,9 +70,28 @@ void GameObject::Update()
 					if(App->renderer3D->IsInsideCameraView(_AABB))
 						mesh->Update();
 				}
+				else if (components[i]->GetType() == ComponentType::ANIMATION)
+				{
+					Animation* animation = (Animation*)components[i];
+
+					if (App->editor->pause_anim == true && App->editor->play_anim == true)
+					{
+						animation->enabled = false;
+					}
+					animation->Update();
+				}
 				else
 				{
 					components[i]->Update();
+				}
+			}
+			else if (components[i]->GetType() == ComponentType::ANIMATION)
+			{
+				Animation* animation = (Animation*)components[i];
+
+				if (App->editor->pause_anim == false && App->editor->play_anim == true)
+				{
+					animation->enabled = true;
 				}
 			}
 		}

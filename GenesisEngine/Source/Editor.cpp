@@ -41,6 +41,7 @@ Editor::Editor(bool start_enabled) : Module(start_enabled)
 	show_game_buttons = true;
 
 	play_anim = false;
+	pause_anim = false;
 
 	current_theme = 1;
 
@@ -453,6 +454,7 @@ void Editor::ShowGameButtons()
 			{
 				App->StartGame();
 				play_anim = true;
+				pause_anim = false;
 			}
 		}
 		else {
@@ -469,18 +471,16 @@ void Editor::ShowGameButtons()
 			if (ImGui::Button("Resume", ImVec2(45, 20)))
 			{
 				Time::gameClock.Resume();
-				play_anim = true;
+				pause_anim = false;
 			}
-				
 		}
 		else 
 		{
 			if (ImGui::Button("Pause", ImVec2(45, 20)))
 			{
 				Time::gameClock.Pause();
-				play_anim = false;
+				pause_anim = true;
 			}
-				
 		}
 
 	}
