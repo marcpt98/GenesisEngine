@@ -39,7 +39,7 @@ layout: default
       
     
     <h2>Skeletal Animation</h2> 
-     Read the animation from the model and reproduces it in the engine. It generate a skeleton, that moves all vertices acordingly generating real time animations.<br/>
+     Read the animation from the model and reproduces it in the engine. It generates a skeleton, that moves all vertices acordingly generating real time animations.<br/>
       
      <img src="https://cdn.discordapp.com/attachments/796830125256736808/797619869637541898/ezgif.com-gif-maker.gif">
      <img src="https://cdn.discordapp.com/attachments/796830125256736808/797620500892614687/ezgif.com-gif-maker_1.gif">
