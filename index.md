@@ -18,7 +18,7 @@ layout: default
     <img src="https://raw.githubusercontent.com/marcpt98/Fight-club/gh-pages/Web%20images/Foto_marc.png" width="200">
 
       <h4><a href="https://github.com/Sauko22">Pol Juan</a>: Geometry Viewer, Transformation and GameObject Hierachy, Camera GameObject, Play / Stop , Skeletal Animation </h4>
-    <img src="https://github.com/Kalima-Entertainment/Fallout_Strategy/blob/gh-pages/Photos/poljs.jpg?raw=true" width="400">
+    <img src="https://github.com/Kalima-Entertainment/Fallout_Strategy/blob/gh-pages/Photos/poljs.jpg?raw=true" width="200">
      <h2>
      
      
@@ -39,9 +39,10 @@ layout: default
       
     
     <h2>Skeletal Animation</h2> 
-     Read the animation from the model and reproduces it in the engine. It generate a skeleton, that moves all vertices acordingly generating real time animations.
+     Read the animation from the model and reproduces it in the engine. It generate a skeleton, that moves all vertices acordingly generating real time animations.<br/>
       
-     
+     <img src="https://cdn.discordapp.com/attachments/796830125256736808/797619869637541898/ezgif.com-gif-maker.gif">
+     <img src="https://cdn.discordapp.com/attachments/796830125256736808/797620500892614687/ezgif.com-gif-maker_1.gif">
      
     <h2>Showcase</h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DVk-yDgaHPs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
