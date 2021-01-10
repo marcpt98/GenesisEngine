@@ -18,7 +18,7 @@ layout: default
     <img src="https://raw.githubusercontent.com/marcpt98/Fight-club/gh-pages/Web%20images/Foto_marc.png" width="200">
 
       <h4><a href="https://github.com/Sauko22">Pol Juan</a>: Geometry Viewer, Transformation and GameObject Hierachy, Camera GameObject, Play / Stop , Skeletal Animation </h4>
-    <img src="https://github.com/Kalima-Entertainment/Fallout_Strategy/blob/gh-pages/Photos/poljs.jpg?raw=true" width="200">
+    <img src="https://github.com/Kalima-Entertainment/Fallout_Strategy/blob/gh-pages/Photos/poljs.jpg?raw=true" width="300">
      <h2>
      
      
